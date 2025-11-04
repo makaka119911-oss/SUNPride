@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNPRIDE - Рукодельные работы от Татьяны Солнечной</title>
+    <title>SUNPRIDE - Эксклюзивные рукодельные работы от Татьяны Солнечной</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --color-cream-50: rgba(252, 252, 249, 1);
-            --color-cream-100: rgba(255, 255, 253, 1);
-            --color-brown-600: rgba(94, 82, 64, 1);
-            --color-slate-900: rgba(19, 52, 59, 1);
-            --color-slate-500: rgba(98, 108, 113, 1);
-            --color-teal-500: rgba(33, 128, 141, 1);
-            --color-teal-600: rgba(29, 116, 128, 1);
-            --color-gold: rgba(212, 175, 55, 1);
-            --color-charcoal-700: rgba(31, 33, 33, 1);
-            --color-charcoal-800: rgba(38, 40, 40, 1);
-            --color-gray-200: rgba(245, 245, 245, 1);
-            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-sun: rgba(255, 204, 0, 1);
+            --color-sun-light: rgba(255, 230, 128, 1);
+            --color-sun-dark: rgba(212, 175, 55, 1);
+            --color-cream: rgba(252, 252, 249, 1);
+            --color-cream-light: rgba(255, 255, 253, 1);
+            --color-brown: rgba(94, 82, 64, 1);
+            --color-charcoal: rgba(40, 40, 40, 1);
+            --color-text: rgba(60, 60, 60, 1);
+            --color-text-light: rgba(120, 120, 120, 1);
             
-            --brown-600-rgb: 94, 82, 64;
-            --teal-500-rgb: 33, 128, 141;
-            --gold-rgb: 212, 175, 55;
-            
-            --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-family-display: Georgia, "Times New Roman", serif;
+            --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-family-display: 'Playfair Display', Georgia, serif;
         }
 
         * {
@@ -35,21 +29,27 @@
 
         body {
             font-family: var(--font-family-base);
-            color: var(--color-slate-900);
-            background-color: var(--color-cream-50);
+            color: var(--color-text);
+            background-color: var(--color-cream);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         /* Хедер */
         .header {
-            background: linear-gradient(135deg, var(--color-cream-100) 0%, rgba(212, 175, 55, 0.1) 100%);
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--color-cream-light) 0%, rgba(255, 230, 128, 0.2) 100%);
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header-content {
@@ -65,43 +65,56 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
         }
 
         .logo-image {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            animation: logoFloat 3s ease-in-out infinite;
+            animation: sunGlow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.3));
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover .logo-image {
+            transform: rotate(15deg) scale(1.05);
         }
 
         .logo-text {
             font-family: var(--font-family-display);
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--color-slate-900);
-            letter-spacing: 2px;
+            color: var(--color-charcoal);
+            letter-spacing: 1px;
         }
 
         .logo-text span {
-            color: var(--color-gold);
+            color: var(--color-sun);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
         }
 
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        @keyframes sunGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.3));
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px rgba(255, 204, 0, 0.6));
+            }
         }
 
         .nav {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav a {
-            color: var(--color-slate-900);
+            color: var(--color-charcoal);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
             position: relative;
+            font-size: 1.05rem;
         }
 
         .nav a::after {
@@ -111,12 +124,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--color-gold);
+            background: var(--color-sun);
             transition: width 0.3s ease;
         }
 
         .nav a:hover {
-            color: var(--color-gold);
+            color: var(--color-sun);
         }
 
         .nav a:hover::after {
@@ -127,22 +140,37 @@
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
+            padding: 5px;
         }
 
         .menu-toggle span {
             width: 25px;
             height: 3px;
-            background: var(--color-slate-900);
+            background: var(--color-charcoal);
             transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         /* Герой-секция */
         .hero {
             position: relative;
-            background: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=1920&q=80') center/cover;
-            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(252, 252, 249, 0.9) 0%, rgba(255, 230, 128, 0.3) 100%), 
+                        url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1920&q=80') center/cover;
+            padding: 10rem 2rem;
             text-align: center;
             overflow: hidden;
         }
@@ -150,29 +178,18 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(252, 252, 249, 0.95) 0%, rgba(212, 175, 55, 0.3) 100%);
-            z-index: 1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            animation: heroGlow 15s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+            animation: sunRays 20s linear infinite;
             z-index: 1;
         }
 
-        @keyframes heroGlow {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            50% { transform: translate(-10%, -10%) scale(1.1); opacity: 0.6; }
+        @keyframes sunRays {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-content {
@@ -199,77 +216,108 @@
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--color-slate-900);
+            color: var(--color-charcoal);
             line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
         }
 
         .hero p {
             font-size: 1.3rem;
-            color: var(--color-slate-500);
-            margin-bottom: 2rem;
+            color: var(--color-text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--color-gold) 0%, rgba(212, 175, 55, 0.8) 100%);
+            background: linear-gradient(135deg, var(--color-sun) 0%, var(--color-sun-dark) 100%);
             color: white;
-            padding: 1rem 3rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .cta-button::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
         }
 
         .cta-button:hover::before {
-            width: 300px;
-            height: 300px;
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 204, 0, 0.6);
         }
 
-        .cta-button span {
-            position: relative;
+        .sun-animation {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--color-sun) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.7;
+            animation: floatSun 6s ease-in-out infinite;
             z-index: 1;
+        }
+
+        @keyframes floatSun {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -15px) scale(1.1); }
+            50% { transform: translate(-15px, 10px) scale(0.9); }
+            75% { transform: translate(10px, 15px) scale(1.05); }
         }
 
         /* Секция "О бренде" */
         .about {
             padding: 6rem 2rem;
-            background: var(--color-cream-100);
+            background: var(--color-cream-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--color-sun-light) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.3;
         }
 
         .about-content {
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
             font-family: var(--font-family-display);
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--color-slate-900);
+            color: var(--color-charcoal);
             position: relative;
             display: inline-block;
         }
@@ -282,7 +330,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+            background: linear-gradient(90deg, transparent, var(--color-sun), transparent);
             animation: lineGrow 2s ease-out;
         }
 
@@ -296,17 +344,18 @@
         }
 
         .section-subtitle {
-            color: var(--color-gold);
+            color: var(--color-sun);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 2rem;
+            font-weight: 600;
         }
 
         .about p {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: var(--color-slate-500);
+            color: var(--color-text-light);
             max-width: 800px;
             margin: 0 auto;
         }
@@ -314,18 +363,33 @@
         /* Секция товаров */
         .products {
             padding: 6rem 2rem;
-            background: var(--color-cream-50);
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .products::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--color-sun-light) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.2;
         }
 
         .products-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-top: 4rem;
         }
 
@@ -333,10 +397,32 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             animation: cardFadeIn 0.6s ease-out backwards;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--color-sun) 0%, transparent 30%, transparent 70%, var(--color-sun) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
         }
 
         .product-card:nth-child(1) { animation-delay: 0.1s; }
@@ -359,20 +445,20 @@
 
         .product-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 204, 0, 0.2);
         }
 
         .product-image {
             width: 100%;
-            height: 350px;
+            height: 280px;
             object-fit: cover;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(33, 128, 141, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 230, 128, 0.2) 0%, rgba(255, 204, 0, 0.1) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: var(--color-gold);
-            transition: transform 0.5s ease;
+            font-size: 4rem;
+            color: var(--color-sun);
+            transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
         }
@@ -385,11 +471,11 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
+            transition: left 0.7s ease;
         }
 
         .product-card:hover .product-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .product-card:hover .product-image::after {
@@ -401,22 +487,24 @@
         }
 
         .product-category {
-            color: var(--color-teal-500);
+            color: var(--color-brown);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .product-name {
             font-family: var(--font-family-display);
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--color-slate-900);
+            color: var(--color-charcoal);
+            line-height: 1.3;
         }
 
         .product-description {
-            color: var(--color-slate-500);
+            color: var(--color-text-light);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -430,24 +518,67 @@
         .product-price {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--color-gold);
+            color: var(--color-sun);
         }
 
         .order-button {
-            background: var(--color-teal-500);
+            background: var(--color-sun);
             color: white;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+        }
+
+        .order-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .order-button:hover::before {
+            left: 100%;
         }
 
         .order-button:hover {
-            background: var(--color-teal-600);
+            background: var(--color-sun-dark);
             transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .sun-burst {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-sun) 0%, transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes sunBurst {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.8;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
         }
 
         /* Модальное окно */
@@ -463,6 +594,12 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal.active {
@@ -477,22 +614,35 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            animation: modalSlideIn 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .modal-image {
             width: 100%;
             height: 400px;
             object-fit: cover;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(33, 128, 141, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 230, 128, 0.2) 0%, rgba(255, 204, 0, 0.1) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            color: var(--color-gold);
+            color: var(--color-sun);
         }
 
         .modal-info {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .modal-close {
@@ -501,7 +651,7 @@
             right: 1rem;
             background: white;
             border: none;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             width: 40px;
             height: 40px;
@@ -511,24 +661,41 @@
             justify-content: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .modal-close:hover {
             transform: rotate(90deg);
-            background: var(--color-gold);
+            background: var(--color-sun);
             color: white;
         }
 
         /* Контакты */
         .contact {
             padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--color-cream-100) 0%, rgba(212, 175, 55, 0.05) 100%);
+            background: linear-gradient(135deg, var(--color-cream-light) 0%, rgba(255, 230, 128, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--color-sun-light) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.2;
         }
 
         .contact-content {
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-info {
@@ -544,22 +711,45 @@
             justify-content: center;
             gap: 1rem;
             font-size: 1.1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .contact-item a {
-            color: var(--color-teal-500);
+            color: var(--color-brown);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .contact-item a:hover {
-            color: var(--color-gold);
+            color: var(--color-sun);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-sun-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-sun);
+            font-size: 1.2rem;
         }
 
         /* Футер */
         .footer {
-            background: var(--color-slate-900);
-            color: var(--color-gray-200);
+            background: var(--color-charcoal);
+            color: white;
             padding: 3rem 2rem;
             text-align: center;
         }
@@ -571,23 +761,32 @@
 
         .footer p {
             margin-bottom: 1rem;
+            opacity: 0.8;
         }
 
         .social-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             margin-top: 2rem;
         }
 
         .social-links a {
-            color: var(--color-gray-200);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--color-gold);
+            background: var(--color-sun);
+            transform: translateY(-5px);
         }
 
         /* Адаптивность */
@@ -601,15 +800,20 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--color-cream-100);
+                background: var(--color-cream-light);
                 flex-direction: column;
                 padding: 2rem;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 display: none;
+                gap: 1.5rem;
             }
 
             .nav.active {
                 display: flex;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem;
             }
 
             .hero h1 {
@@ -629,42 +833,52 @@
             }
 
             .modal-image {
-                height: 300px;
+                height: 250px;
+            }
+
+            .modal-info {
+                padding: 1.5rem;
             }
         }
 
         /* Темная тема */
         @media (prefers-color-scheme: dark) {
             :root {
-                --color-cream-50: var(--color-charcoal-700);
-                --color-cream-100: var(--color-charcoal-800);
-                --color-slate-900: var(--color-gray-200);
-                --color-slate-500: var(--color-gray-300);
+                --color-cream: rgba(30, 30, 30, 1);
+                --color-cream-light: rgba(40, 40, 40, 1);
+                --color-text: rgba(220, 220, 220, 1);
+                --color-text-light: rgba(180, 180, 180, 1);
             }
 
             .product-card {
-                background: var(--color-charcoal-800);
+                background: var(--color-cream-light);
             }
 
             .modal-content {
-                background: var(--color-charcoal-800);
+                background: var(--color-cream-light);
+                color: var(--color-text);
             }
 
             .modal-close {
-                background: var(--color-charcoal-700);
-                color: white;
+                background: var(--color-cream-light);
+                color: var(--color-text);
+            }
+
+            .contact-item {
+                background: var(--color-cream-light);
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Хедер -->
-    <header class="header">
+    <header class="header" id="header">
         <div class="header-content">
-            <div class="logo">
+            <a href="#home" class="logo">
                 <img src="photo_2024-08-28_01-16-53.jpg" alt="SUNPRIDE Logo" class="logo-image">
                 <div class="logo-text">SUN<span>PRIDE</span></div>
-            </div>
+            </a>
             <nav class="nav" id="nav">
                 <a href="#home">Главная</a>
                 <a href="#about">О бренде</a>
@@ -681,6 +895,9 @@
 
     <!-- Герой-секция -->
     <section class="hero" id="home">
+        <div class="sun-animation" style="top: 10%; left: 10%;"></div>
+        <div class="sun-animation" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+        <div class="sun-animation" style="bottom: 15%; left: 20%; animation-delay: 2s;"></div>
         <div class="hero-content">
             <h1>Эксклюзивные рукодельные работы от Татьяны Солнечной</h1>
             <p>Уникальные изделия ручной работы, созданные с любовью и вдохновением. Каждое произведение — это частичка солнца в вашем доме.</p>
@@ -715,7 +932,7 @@
                         <p class="product-description">Авторское панно ручной работы из натуральных материалов. Идеально впишется в интерьер гостиной или спальни, создавая атмосферу уюта.</p>
                         <div class="product-footer">
                             <div class="product-price">от 5 500 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -729,7 +946,7 @@
                         <p class="product-description">Легкое летнее платье из натуральных тканей с ручной вышивкой. Каждое платье уникально и создается под заказ с учетом ваших пожеланий.</p>
                         <div class="product-footer">
                             <div class="product-price">от 8 900 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -743,7 +960,7 @@
                         <p class="product-description">Элегантный чокер ручной работы с натуральными камнями и авторским плетением. Подчеркнет вашу индивидуальность и дополнит любой образ.</p>
                         <div class="product-footer">
                             <div class="product-price">от 3 200 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -757,7 +974,7 @@
                         <p class="product-description">Уникальное семейное древо из натурального стабилизированного мха. Не требует ухода, сохраняет свежесть годами. Идеальный подарок для семьи.</p>
                         <div class="product-footer">
                             <div class="product-price">от 12 500 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -771,7 +988,7 @@
                         <p class="product-description">Нежное панно из стабилизированных цветов и мха. Сохраняет естественную красоту растений на долгие годы без специального ухода.</p>
                         <div class="product-footer">
                             <div class="product-price">от 6 800 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -785,7 +1002,7 @@
                         <p class="product-description">Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры.</p>
                         <div class="product-footer">
                             <div class="product-price">от 15 900 ₽</div>
-                            <button class="order-button">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); createSunBurst(event)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -800,19 +1017,25 @@
             <h2 class="section-title">Контакты</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📱</span>
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
                     <a href="tel:+79000000000">+7 (900) 000-00-00</a>
                 </div>
                 <div class="contact-item">
-                    <span>✉️</span>
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
                     <a href="mailto:sunpride@example.com">sunpride@example.com</a>
                 </div>
                 <div class="contact-item">
-                    <span>📍</span>
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
                     <span>Реутов, Московская область</span>
                 </div>
             </div>
-            <p style="margin-top: 2rem; color: var(--color-slate-500);">
+            <p style="margin-top: 2rem; color: var(--color-text-light);">
                 Для заказа изделия или консультации свяжитесь с нами любым удобным способом. Мы будем рады воплотить ваши идеи в жизнь!
             </p>
         </div>
@@ -823,14 +1046,14 @@
         <div class="footer-content">
             <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
                 <img src="photo_2024-08-28_01-16-53.jpg" alt="SUNPRIDE Logo" class="logo-image" style="width: 80px; height: 80px;">
-                <div class="logo-text" style="color: var(--color-gray-200);">SUN<span style="color: var(--color-gold);">PRIDE</span></div>
+                <div class="logo-text" style="color: white;">SUN<span style="color: var(--color-sun);">PRIDE</span></div>
             </div>
             <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
             <p>&copy; 2025 SUNPRIDE. Все права защищены.</p>
             <div class="social-links">
-                <a href="#" aria-label="Instagram">📷</a>
-                <a href="#" aria-label="VK">💬</a>
-                <a href="#" aria-label="WhatsApp">📱</a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
@@ -846,7 +1069,7 @@
                 <p class="product-description" id="modalDescription"></p>
                 <div style="margin-top: 2rem;">
                     <div class="product-price" id="modalPrice" style="margin-bottom: 1rem;"></div>
-                    <p style="color: var(--color-slate-500); margin-bottom: 1.5rem;">Для оформления заказа свяжитесь с нами по телефону или напишите на электронную почту.</p>
+                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">Для оформления заказа свяжитесь с нами по телефону или напишите на электронную почту.</p>
                     <a href="#contact" class="cta-button" onclick="closeModal()">Связаться с нами</a>
                 </div>
             </div>
@@ -906,12 +1129,14 @@
 
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
 
         // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
+                menuToggle.classList.remove('active');
             });
         });
 
@@ -927,6 +1152,16 @@
                     });
                 }
             });
+        });
+
+        // Изменение хедера при прокрутке
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // Модальное окно
@@ -963,6 +1198,37 @@
                 closeModal();
             }
         });
+
+        // Анимация "солнечного взрыва" при нажатии на кнопку заказа
+        function createSunBurst(event) {
+            const button = event.target;
+            const burst = document.createElement('div');
+            burst.classList.add('sun-burst');
+            
+            const rect = button.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            burst.style.left = `${x}px`;
+            burst.style.top = `${y}px`;
+            
+            document.body.appendChild(burst);
+            
+            // Запускаем анимацию
+            setTimeout(() => {
+                burst.style.animation = 'sunBurst 0.6s ease-out forwards';
+            }, 10);
+            
+            // Удаляем элемент после завершения анимации
+            setTimeout(() => {
+                burst.remove();
+            }, 600);
+            
+            // Показываем сообщение о добавлении в корзину
+            setTimeout(() => {
+                alert('Товар добавлен в корзину! С вами свяжутся для уточнения деталей заказа.');
+            }, 300);
+        }
     </script>
 </body>
 </html>

@@ -36,6 +36,116 @@
             overflow-x: hidden;
         }
 
+        /* Логотип - создан с помощью CSS */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .logo-sun {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, var(--color-sun) 0%, var(--color-sun-dark) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 179, 71, 0.5);
+            animation: sunPulse 4s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-sun::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: conic-gradient(
+                transparent 0deg,
+                rgba(255, 255, 255, 0.3) 30deg,
+                transparent 60deg,
+                rgba(255, 255, 255, 0.3) 90deg,
+                transparent 120deg,
+                rgba(255, 255, 255, 0.3) 150deg,
+                transparent 180deg,
+                rgba(255, 255, 255, 0.3) 210deg,
+                transparent 240deg,
+                rgba(255, 255, 255, 0.3) 270deg,
+                transparent 300deg,
+                rgba(255, 255, 255, 0.3) 330deg,
+                transparent 360deg
+            );
+            animation: sunRotate 20s linear infinite;
+        }
+
+        .logo-sun-rays {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: 
+                radial-gradient(circle, transparent 60px, var(--color-sun-light) 60px, var(--color-sun-light) 70px, transparent 70px),
+                repeating-conic-gradient(
+                    from 0deg,
+                    var(--color-sun-light) 0deg 10deg,
+                    transparent 10deg 20deg
+                );
+            border-radius: 50%;
+            animation: sunRaysRotate 30s linear infinite;
+            opacity: 0.7;
+        }
+
+        .logo-text {
+            position: relative;
+            z-index: 10;
+            font-family: var(--font-family-display);
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 1.8rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255, 179, 71, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(255, 179, 71, 0.7);
+            }
+        }
+
+        @keyframes sunRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes sunRaysRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
         /* Хедер */
         .header {
             background: rgba(255, 249, 240, 0.95);
@@ -83,7 +193,7 @@
             transform: rotate(15deg) scale(1.05);
         }
 
-        .logo-text {
+        .logo-text-header {
             font-family: var(--font-family-display);
             font-size: 2.2rem;
             font-weight: 700;
@@ -92,7 +202,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        .logo-text span {
+        .logo-text-header span {
             color: var(--color-sun);
             text-shadow: 0 0 10px rgba(255, 179, 71, 0.3);
         }
@@ -171,8 +281,7 @@
         /* Герой-секция */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 249, 240, 0.95) 0%, rgba(255, 179, 71, 0.2) 100%), 
-                        url('https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1920&q=80') center/cover;
+            background: linear-gradient(135deg, rgba(255, 249, 240, 0.95) 0%, rgba(255, 179, 71, 0.2) 100%);
             padding: 8rem 2rem;
             text-align: center;
             overflow: hidden;
@@ -190,11 +299,11 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255, 179, 71, 0.1) 0%, transparent 70%);
-            animation: sunRays 20s linear infinite;
+            animation: sunRaysBg 20s linear infinite;
             z-index: 1;
         }
 
-        @keyframes sunRays {
+        @keyframes sunRaysBg {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
@@ -896,7 +1005,7 @@
                 height: 80px;
             }
 
-            .logo-text {
+            .logo-text-header {
                 font-size: 1.8rem;
             }
 
@@ -982,8 +1091,13 @@
     <header class="header" id="header">
         <div class="header-content">
             <a href="#home" class="logo">
-                <img src="photo_2024-08-28_01-16-53.jpg" alt="SUNPRIDE Logo" class="logo-image">
-                <div class="logo-text">SUN<span>PRIDE</span></div>
+                <div class="logo-container">
+                    <div class="logo-sun-rays"></div>
+                    <div class="logo-sun">
+                        <div class="logo-text">SUN<br><span>PRIDE</span></div>
+                    </div>
+                </div>
+                <div class="logo-text-header">SUN<span>PRIDE</span></div>
             </a>
             <nav class="nav" id="nav">
                 <a href="#home">Главная</a>
@@ -1006,7 +1120,12 @@
         <div class="sun-animation" style="bottom: 15%; left: 20%; animation-delay: 2s;"></div>
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="photo_2024-08-28_01-16-53.jpg" alt="SUNPRIDE Logo" class="hero-logo-image">
+                <div class="logo-container" style="width: 250px; height: 250px;">
+                    <div class="logo-sun-rays"></div>
+                    <div class="logo-sun" style="width: 180px; height: 180px;">
+                        <div class="logo-text" style="font-size: 2.2rem;">SUN<br><span style="font-size: 1.8rem;">PRIDE</span></div>
+                    </div>
+                </div>
                 <div class="hero-logo-text">SUN<span>PRIDE</span></div>
             </div>
             <h1>Эксклюзивные рукодельные работы от Татьяны Солнечной</h1>
@@ -1155,7 +1274,12 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="photo_2024-08-28_01-16-53.jpg" alt="SUNPRIDE Logo" class="footer-logo-image">
+                <div class="logo-container" style="width: 150px; height: 150px;">
+                    <div class="logo-sun-rays"></div>
+                    <div class="logo-sun" style="width: 110px; height: 110px;">
+                        <div class="logo-text" style="font-size: 1.4rem;">SUN<br><span style="font-size: 1.1rem;">PRIDE</span></div>
+                    </div>
+                </div>
                 <div class="footer-logo-text">SUN<span>PRIDE</span></div>
             </div>
             <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>

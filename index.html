@@ -76,6 +76,7 @@
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
             transition: transform 0.5s ease;
+            background-color: white; /* Фон для прозрачного PNG */
         }
 
         .logo:hover .logo-image {
@@ -221,6 +222,7 @@
             animation: heroLogoFloat 6s ease-in-out infinite;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
             margin-bottom: 1.5rem;
+            background-color: white; /* Фон для прозрачного PNG */
         }
 
         @keyframes heroLogoFloat {
@@ -468,6 +470,7 @@
         .product-card:nth-child(4) { animation-delay: 0.4s; }
         .product-card:nth-child(5) { animation-delay: 0.5s; }
         .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
 
         @keyframes cardFadeIn {
             from {
@@ -809,6 +812,7 @@
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
             margin-bottom: 1rem;
+            background-color: white; /* Фон для прозрачного PNG */
         }
 
         .footer-logo-text {
@@ -924,6 +928,17 @@
                 max-width: 350px;
             }
 
+            /* Выравнивание контактов в мобильной версии */
+            .contact-info {
+                align-items: center;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
             .modal-image {
                 height: 250px;
             }
@@ -1032,7 +1047,7 @@
     <header class="header" id="header">
         <div class="header-content">
             <a href="#home" class="logo">
-                <img src="+++++++++++++++++.png" alt="SUNPRIDE Logo" class="logo-image">
+                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/logo.png" alt="SUNPRIDE Logo" class="logo-image">
                 <div class="logo-text">SUN<span>PRIDE</span></div>
             </a>
             <nav class="nav" id="nav">
@@ -1056,7 +1071,7 @@
         <div class="gold-animation" style="bottom: 15%; left: 20%; animation-delay: 2s;"></div>
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="+++++++++++++++++.png" alt="SUNPRIDE Logo" class="hero-logo-image">
+                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/logo.png" alt="SUNPRIDE Logo" class="hero-logo-image">
                 <div class="hero-logo-text">SUN<span>PRIDE</span></div>
             </div>
             <h1>Эксклюзивные рукодельные работы от Татьяны Солнечной</h1>
@@ -1166,6 +1181,20 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Шопер -->
+                <div class="product-card" onclick="openModal(6)">
+                    <div class="product-image">👜</div>
+                    <div class="product-info">
+                        <div class="product-category">Аксессуары</div>
+                        <h3 class="product-name">Эко-шопер "Солнечный луч"</h3>
+                        <p class="product-description">Стильный и практичный шопер ручной работы из натурального хлопка. Уникальный дизайн с авторской вышивкой. Идеальный спутник для покупок и прогулок.</p>
+                        <div class="product-footer">
+                            <div class="product-price">от 2 500 ₽</div>
+                            <button class="order-button" onclick="event.stopPropagation(); createGoldBurst(event)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1178,9 +1207,9 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+                        <i class="fab fa-telegram"></i>
                     </div>
-                    <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                    <a href="https://t.me/Tan4ik77G" target="_blank">@Tan4ik77G</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">
@@ -1205,7 +1234,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="+++++++++++++++++.png" alt="SUNPRIDE Logo" class="footer-logo-image">
+                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/logo.png" alt="SUNPRIDE Logo" class="footer-logo-image">
                 <div class="footer-logo-text">SUN<span>PRIDE</span></div>
             </div>
             <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
@@ -1280,6 +1309,13 @@
                 name: 'Вечернее платье "Звездная ночь"',
                 description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры. Возможен выбор цвета, длины, степени открытости. Ткань: шелк, атлас или бархат премиум-класса. Время изготовления: 3-4 недели. Идеально для особых случаев.',
                 price: 'от 15 900 ₽'
+            },
+            {
+                icon: '👜',
+                category: 'Аксессуары',
+                name: 'Эко-шопер "Солнечный луч"',
+                description: 'Стильный и практичный шопер ручной работы из натурального хлопка. Размер 40x40 см, длинные ручки для удобного ношения. Уникальный дизайн с авторской вышивкой солнечных мотивов. Вместительный и прочный, идеальный спутник для покупок и прогулок. Экологичная альтернатива пластиковым пакетам.',
+                price: 'от 2 500 ₽'
             }
         ];
 

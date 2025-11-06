@@ -96,8 +96,8 @@
         }
 
         .logo-svg {
-            width: 60px;
-            height: 60px;
+            width: 80px; /* Увеличил логотип в хедере */
+            height: 80px;
             filter: drop-shadow(0 5px 25px rgba(255, 215, 0, 0.6));
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             flex-shrink: 0;
@@ -126,7 +126,7 @@
 
         .logo-text {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* Увеличил текст логотипа */
             font-weight: 700;
             letter-spacing: 1.5px;
             background: var(--gradient-gold);
@@ -255,8 +255,8 @@
         }
 
         .hero-logo-svg {
-            width: 300px;
-            height: 300px;
+            width: 450px; /* Увеличил логотип в герое */
+            height: 450px;
             filter: drop-shadow(0 15px 50px rgba(255, 215, 0, 0.8));
             animation: gentleFloat 6s ease-in-out infinite;
             margin: 0 auto 2rem;
@@ -274,7 +274,7 @@
 
         .hero-brand-name {
             font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: 4.5rem; /* Увеличил название бренда */
             font-weight: 900;
             letter-spacing: 4px;
             margin-bottom: 1rem;
@@ -405,16 +405,17 @@
             animation: fadeInUp 1s ease 0.9s both;
         }
 
+        /* УЛУЧШЕННАЯ КНОПКА CTA ДЛЯ КОМПЬЮТЕРНОЙ ВЕРСИИ */
         .cta-button {
             display: inline-block;
-            background: transparent;
-            color: var(--color-gold);
-            padding: 1rem 2.5rem;
+            background: var(--color-gold); /* Сделал фон золотым по умолчанию */
+            color: var(--color-charcoal); /* Текст темным для контраста */
+            padding: 1.2rem 3rem; /* Увеличил размер кнопки */
             border: 2px solid var(--color-gold);
             border-radius: 0;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600; /* Сделал текст жирнее */
+            font-size: 1.1rem; /* Увеличил размер текста */
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -422,6 +423,7 @@
             overflow: hidden;
             animation: fadeInUp 1s ease 1.1s both;
             font-family: var(--font-base);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5); /* Добавил тень для выделения */
         }
 
         .cta-button::before {
@@ -431,7 +433,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--color-gold);
+            background: var(--color-charcoal); /* Инвертируем цвета при наведении */
             transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: -1;
         }
@@ -441,10 +443,10 @@
         }
 
         .cta-button:hover {
-            color: var(--color-charcoal);
+            color: var(--color-gold); /* Текст становится золотым при наведении */
             border-color: var(--color-gold);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px); /* Более заметное поднятие */
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7); /* Усиленная тень при наведении */
         }
 
         /* === ПРЕМИАЛЬНАЯ СЕКЦИЯ "О БРЕНДЕ" === */
@@ -893,15 +895,15 @@
         }
 
         .footer-logo-svg {
-            width: 150px;
-            height: 150px;
+            width: 200px; /* Увеличил логотип в футере */
+            height: 200px;
             filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
             margin: 0 auto 1.5rem;
         }
 
         .footer-brand {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 2.5rem; /* Увеличил текст бренда в футере */
             font-weight: 700;
             letter-spacing: 3px;
             margin-bottom: 1rem;
@@ -984,12 +986,12 @@
             }
 
             .hero-logo-svg {
-                width: 200px;
-                height: 200px;
+                width: 250px; /* Уменьшил для мобильных, но больше чем было */
+                height: 250px;
             }
 
             .hero-brand-name {
-                font-size: 2.5rem;
+                font-size: 3rem; /* Уменьшил для мобильных, но больше чем было */
                 letter-spacing: 3px;
             }
 
@@ -1058,18 +1060,34 @@
             }
 
             .footer-logo-svg {
-                width: 100px;
-                height: 100px;
+                width: 120px; /* Уменьшил для мобильных, но больше чем было */
+                height: 120px;
             }
 
             .footer-brand {
-                font-size: 1.8rem;
+                font-size: 2rem; /* Уменьшил для мобильных, но больше чем было */
+            }
+            
+            /* Для мобильных возвращаем первоначальный стиль кнопки */
+            .cta-button {
+                background: transparent;
+                color: var(--color-gold);
+                padding: 1rem 2.5rem;
+                font-size: 0.9rem;
+                box-shadow: none;
+            }
+            
+            .cta-button:hover {
+                background: transparent;
+                color: var(--color-charcoal);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
             }
         }
 
         @media (max-width: 480px) {
             .hero-brand-name {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .hero h1 {
@@ -1102,12 +1120,12 @@
             }
             
             .logo-text {
-                font-size: 1.2rem;
+                font-size: 1.5rem; /* Уменьшил для очень маленьких экранов */
             }
             
             .logo-svg {
-                width: 50px;
-                height: 50px;
+                width: 60px; /* Уменьшил для очень маленьких экранов */
+                height: 60px;
             }
         }
     </style>
@@ -1140,7 +1158,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-logo-container">
-                <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="hero-logo-svg animated-tiger-logo-hero" alt="SUNPRIDE Logo" style="width: 300px; height: 300px; object-fit: contain; filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.4)); background: transparent;">
+                <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="hero-logo-svg animated-tiger-logo-hero" alt="SUNPRIDE Logo" style="width: 450px; height: 450px; object-fit: contain; filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.4)); background: transparent;">
             </div>
             <h1 class="hero-brand-name" data-text="SUNPRIDE">SUNPRIDE</h1>
             <div class="hero-subtitle">Handmade with Love</div>
@@ -1321,7 +1339,7 @@
 
     <!-- ФУТЕР -->
     <footer class="footer">
-        <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="footer-logo-svg animated-tiger-logo" alt="SUNPRIDE Logo" style="width: 150px; height: 150px; object-fit: contain; filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5)); background: transparent;">
+        <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="footer-logo-svg animated-tiger-logo" alt="SUNPRIDE Logo" style="width: 200px; height: 200px; object-fit: contain; filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5)); background: transparent;">
         <div class="footer-brand">SUNPRIDE</div>
         <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
         <p>&copy; 2025 SUNPRIDE. Все права защищены.</p>
@@ -1386,99 +1404,11 @@
                 icon: '🌸',
                 category: 'Панно',
                 name: 'Флористическое панно "Весенний сад"',
-                description: 'Нежное панно из стабилизированных цветов и мха. Размер 50x70 см. Сохраняет естественную красоту растений на долгие годы без специального ухода. В композиции использованы розы, гортензии, лаванда, эвкалипт.',
+                description: 'Нежное панно из стабилизированных цветов и мха. Размер 50x70 см. Сохраняет естественную красоту растений на долгие годы без специального ухода. В композиции использованы розе, гортензии, лаванда, эвкалипт.',
                 price: 'от 6 800 ₽'
             },
             {
                 icon: '✨',
                 category: 'Одежда',
                 name: 'Вечернее платье "Звездная ночь"',
-                description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры. Возможен выбор цвета, длины, степени открытости. Ткань: шелк, атлас или бархат премиум-класса. Время изготовления: 3-4 недели.',
-                price: 'от 15 900 ₽'
-            },
-            {
-                icon: '👜',
-                category: 'Аксессуары',
-                name: 'Эко-шопер "Солнечный луч"',
-                description: 'Стильный и практичный шопер ручной работы из натурального хлопка. Размер 40x40 см, длинные ручки для удобного ношения. Уникальный дизайн с авторской вышивкой солнечных мотивов. Экологичная альтернатива пластиковым пакетам.',
-                price: 'от 2 500 ₽'
-            }
-        ];
-
-        // Мобильное меню
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
-
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Хедер при прокрутке
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Модальное окно
-        function openModal(index) {
-            const product = products[index];
-            const modal = document.getElementById('modal');
-            
-            document.getElementById('modalIcon').textContent = product.icon;
-            document.getElementById('modalCategory').textContent = product.category;
-            document.getElementById('modalName').textContent = product.name;
-            document.getElementById('modalDescription').textContent = product.description;
-            document.getElementById('modalPrice').textContent = product.price;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('modal').addEventListener('click', (e) => {
-            if (e.target.id === 'modal') {
-                closeModal();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        function orderProduct(index) {
-            const product = products[index];
-            alert(`Отлично! Вы выбрали "${product.name}". Мы свяжемся с вами в ближайшее время для уточнения деталей заказа!`);
-        }
-    </script>
-</body>
-</html>
+                description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками.

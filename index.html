@@ -3,25 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNPRIDE - Эксклюзивные рукодельные работы от Татьяны Солнечной</title>
+    <title>SUNPRIDE - Эксклюзивные рукодельные работы</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+        
         :root {
-            --color-primary: #FF6B35;
-            --color-primary-light: #FF8E53;
-            --color-primary-dark: #E55A2B;
-            --color-secondary: #FFD166;
-            --color-accent: #EF476F;
-            --color-cream: #FFF8F0;
-            --color-cream-light: #FFFDF8;
-            --color-brown: #8B5A2B;
-            --color-brown-dark: #5D3A1A;
-            --color-charcoal: #2A2A2A;
-            --color-text: #333333;
-            --color-text-light: #666666;
+            /* Палитра под логотип (темное золото + бронза + черный) */
+            --color-gold: #C9A227;
+            --color-gold-light: #D4AF37;
+            --color-gold-dark: #8B6914;
+            --color-orange: #CC7000;
+            --color-amber: #D4A017;
+            --color-sun-yellow: #D4A017;
+            --color-cream: #2A2520;
+            --color-cream-dark: #352F28;
+            --color-charcoal: #1A1A1A;
+            --color-charcoal-light: #2A2A2A;
+            --color-text: #E8DCC8;
+            --color-text-light: #B8A88A;
+            --color-white: #FFFFFF;
             
-            --font-family-base: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-family-display: 'Playfair Display', Georgia, serif;
+            /* Темные золотые градиенты */
+            --gradient-gold: linear-gradient(135deg, #C9A227 0%, #B8860B 50%, #8B6914 100%);
+            --gradient-sun: linear-gradient(135deg, #D4AF37 0%, #C9A227 30%, #B8860B 70%, #8B6914 100%);
+            --gradient-luxury: linear-gradient(135deg, #D4AF37 0%, #C9A227 50%, #B8860B 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(139, 105, 20, 0.1) 100%);
+            
+            /* Типографика */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-base: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Солнечные эффекты */
+            --shadow-luxury: 0 20px 60px rgba(255, 215, 0, 0.4);
+            --shadow-premium: 0 10px 40px rgba(255, 140, 0, 0.25);
+            --shadow-soft: 0 5px 20px rgba(255, 215, 0, 0.15);
+            --shadow-glow: 0 0 40px rgba(255, 215, 0, 0.6);
         }
 
         * {
@@ -31,35 +48,38 @@
         }
 
         body {
-            font-family: var(--font-family-base);
+            font-family: var(--font-base);
             color: var(--color-text);
-            background-color: var(--color-cream);
+            background-color: #1A1612;
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
         }
 
-        /* Хедер с новой анимацией */
+        /* === ПРЕМИАЛЬНЫЙ ХЕДЕР === */
         .header {
-            background: rgba(255, 248, 240, 0.95);
-            padding: 1.5rem 0;
-            position: sticky;
+            background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(42, 37, 32, 0.95) 100%);
+            padding: 1rem 0;
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            backdrop-filter: blur(10px);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(201, 162, 39, 0.3);
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid rgba(201, 162, 39, 0.4);
         }
 
         .header.scrolled {
-            padding: 1rem 0;
-            box-shadow: 0 5px 25px rgba(255, 107, 53, 0.2);
-            background: rgba(255, 248, 240, 0.98);
+            padding: 0.7rem 0;
+            background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(42, 37, 32, 0.95) 100%);
+            box-shadow: 0 5px 40px rgba(201, 162, 39, 0.5);
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -74,180 +94,113 @@
             position: relative;
         }
 
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: radial-gradient(circle, var(--color-primary-light) 0%, transparent 70%);
-            opacity: 0;
-            border-radius: 50%;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+        .logo-svg {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 5px 25px rgba(255, 215, 0, 0.6));
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
         }
 
-        .logo:hover::before {
-            opacity: 0.3;
-        }
-
-        .logo-image {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.4));
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            background-color: transparent;
-            animation: logoPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
+        /* Анимация тигрицы как в MGM */
+        @keyframes tigerBreathing {
             0%, 100% { 
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.4));
+                transform: translateY(0) scale(1);
+                filter: drop-shadow(0 5px 25px rgba(255, 215, 0, 0.6));
             }
-            25% { 
-                transform: scale(1.05) rotate(2deg);
-                filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.6));
-            }
-            75% { 
-                transform: scale(1.03) rotate(-1deg);
-                filter: drop-shadow(0 0 18px rgba(255, 107, 53, 0.5));
+            50% { 
+                transform: translateY(-5px) scale(1.02);
+                filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.9));
             }
         }
 
-        .logo:hover .logo-image {
-            transform: scale(1.1) rotate(5deg);
-            filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.7));
+        .animated-tiger-logo {
+            animation: tigerBreathing 4s ease-in-out infinite;
+        }
+
+        .logo:hover .logo-svg {
+            transform: scale(1.05);
+            filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.8));
         }
 
         .logo-text {
-            font-family: var(--font-family-display);
-            font-size: 2.2rem;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--color-brown-dark);
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .logo-text span {
-            color: var(--color-primary);
-            text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
+            letter-spacing: 2px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             position: relative;
         }
 
-        .logo-text span::after {
-            content: '';
+        .logo-text::after {
+            content: 'HANDMADE';
             position: absolute;
-            bottom: -2px;
+            bottom: -12px;
             left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--color-secondary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover .logo-text span::after {
-            transform: scaleX(1);
+            font-size: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--color-text-light);
+            -webkit-text-fill-color: var(--color-text-light);
         }
 
         .nav {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav a {
-            color: var(--color-brown-dark);
+            color: var(--color-text);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             position: relative;
-            font-size: 1.05rem;
             padding: 0.5rem 0;
         }
 
-        .nav a::before {
+        .nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--color-primary);
-            opacity: 0;
-            transform: scaleX(0);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: var(--gradient-gold);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav a:hover {
-            color: var(--color-primary);
-            transform: translateY(-2px);
-        }
-
-        .nav a:hover::before {
-            width: 100%;
+            color: var(--color-gold);
         }
 
         .nav a:hover::after {
-            opacity: 0.3;
-            transform: scaleX(1);
+            width: 100%;
         }
 
-        /* Мобильное меню */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
-            padding: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:hover span {
-            background: var(--color-primary);
         }
 
         .menu-toggle span {
             width: 25px;
-            height: 3px;
-            background: var(--color-brown-dark);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border-radius: 2px;
+            height: 2px;
+            background: var(--color-gold);
+            transition: all 0.3s ease;
         }
 
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-            background: var(--color-primary);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-            background: var(--color-primary);
-        }
-
-        /* Герой-секция с новой анимацией */
+        /* === СОЛНЕЧНЫЙ ГЕРОЙ === */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 248, 240, 0.95) 0%, rgba(255, 107, 53, 0.15) 100%);
-            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #3A2F1F 0%, #5C4A2C 20%, #8B6914 40%, #C9A227 60%, #8B6914 80%, #5C4A2C 100%);
+            padding: 14rem 2rem 8rem;
             text-align: center;
             overflow: hidden;
             min-height: 100vh;
@@ -260,280 +213,245 @@
             content: '';
             position: absolute;
             top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
-            animation: sunRaysBg 25s linear infinite;
-            z-index: 1;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, rgba(255, 140, 0, 0.15) 40%, transparent 70%);
+            animation: floatSlow 30s ease-in-out infinite;
+            filter: blur(50px);
         }
 
-        @keyframes sunRaysBg {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -30px) rotate(10deg); }
+            66% { transform: translate(-30px, 50px) rotate(-5deg); }
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            animation: fadeInUp 1s ease-out;
         }
 
-        @keyframes fadeInUp {
+        .hero-logo-container {
+            margin-bottom: 3rem;
+            animation: fadeInScale 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInScale {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: scale(0.8) translateY(30px);
             }
             to {
                 opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hero-logo-svg {
+            width: 450px;
+            height: 450px;
+            filter: drop-shadow(0 15px 50px rgba(255, 215, 0, 0.8));
+            animation: gentleFloat 6s ease-in-out infinite;
+            margin: 0 auto 3rem;
+        }
+
+        /* Усиленная анимация для героя */
+        .animated-tiger-logo-hero {
+            animation: tigerBreathing 4s ease-in-out infinite, gentleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        /* === СТИЛИ ДЛЯ ОСНОВНОГО ТЕКСТА ГЕРОЯ === */
+        .hero-brand-name {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.9));
+            animation: fadeInUp 1s ease 0.3s both, luxuryShimmer 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-shadow: none;
+            filter: drop-shadow(0 6px 25px rgba(255, 215, 0, 0.8));
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        /* === ВОЛШЕБНЫЙ ТЕКСТ ИЗ РАСПЛАВЛЕННОГО ЗОЛОТА === */
+        .hero-magic-text {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: fadeInUp 1s ease 0.7s both, moltenGoldEffect 4s ease-in-out infinite;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        @keyframes moltenGoldEffect {
+            0%, 100% { 
+                background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF8C00 50%, #FF4500 75%, #FF6347 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
                 transform: translateY(0);
             }
+            50% { 
+                background: linear-gradient(135deg, #FF6347 0%, #FF4500 25%, #FF8C00 50%, #FFA500 75%, #FFD700 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.9)) 
+                        drop-shadow(0 0 60px rgba(255, 69, 0, 0.6));
+                transform: translateY(-5px);
+            }
         }
 
-        .hero-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .hero-logo::before {
+        .hero-magic-text::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--color-primary-light) 0%, transparent 70%);
-            opacity: 0.1;
-            border-radius: 50%;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+                       radial-gradient(circle at 70% 70%, rgba(255, 140, 0, 0.2) 0%, transparent 50%);
+            border-radius: 15px;
             z-index: -1;
-            animation: heroGlow 6s ease-in-out infinite;
+            animation: sparkleFloat 3s ease-in-out infinite;
         }
 
-        @keyframes heroGlow {
+        @keyframes sparkleFloat {
             0%, 100% { 
-                opacity: 0.1;
-                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+                transform: scale(1);
             }
             50% { 
-                opacity: 0.2;
-                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.9;
+                transform: scale(1.05);
             }
         }
 
-        .hero-logo-image {
-            width: 280px;
-            height: 280px;
-            object-fit: contain;
-            animation: heroLogoFloat 8s ease-in-out infinite;
-            filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.5));
-            margin-bottom: 2rem;
-            background-color: transparent;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes heroLogoFloat {
-            0%, 100% { 
-                transform: translateY(0) scale(1) rotate(0deg);
-                filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.5));
-            }
-            25% { 
-                transform: translateY(-15px) scale(1.05) rotate(2deg);
-                filter: drop-shadow(0 0 35px rgba(255, 107, 53, 0.7));
-            }
-            50% { 
-                transform: translateY(-5px) scale(1.03) rotate(-1deg);
-                filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6));
-            }
-            75% { 
-                transform: translateY(-10px) scale(1.04) rotate(1deg);
-                filter: drop-shadow(0 0 32px rgba(255, 107, 53, 0.65));
-            }
-        }
-
-        .hero-logo-text {
-            font-family: var(--font-family-display);
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--color-brown-dark);
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
-            animation: textGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes textGlow {
-            0%, 100% { 
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.1), 0 0 0px rgba(255, 107, 53, 0.5);
-            }
-            50% { 
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.1), 0 0 20px rgba(255, 107, 53, 0.8);
-            }
-        }
-
-        .hero-logo-text span {
-            color: var(--color-primary);
-            position: relative;
-        }
-
-        .hero-logo-text span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
-            animation: spanUnderline 3s ease-in-out infinite;
-        }
-
-        @keyframes spanUnderline {
-            0%, 100% { opacity: 0.5; transform: scaleX(0.8); }
-            50% { opacity: 1; transform: scaleX(1); }
-        }
-
-        .hero h1 {
-            font-family: var(--font-family-display);
-            font-size: 2.8rem;
+        /* === 3D ТЕКСТ ИЗ ЗОЛОТОГО СЛИТКА С БЛЕСТКАМИ === */
+        .hero-3d-text {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--color-brown-dark);
-            line-height: 1.2;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            color: var(--color-text-light);
+            line-height: 1.6;
             margin-bottom: 3rem;
-            max-width: 700px;
+            position: relative;
+            animation: fadeInUp 1s ease 0.9s both, goldBarEffect 5s ease-in-out infinite;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: white;
-            padding: 1.3rem 3.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out 0.9s both;
+        @keyframes goldBarEffect {
+            0%, 100% { 
+                color: #D4AF37;
+                text-shadow: 
+                    2px 2px 0px #8B6914,
+                    4px 4px 0px #5C4A2C,
+                    0 0 20px rgba(212, 175, 55, 0.7),
+                    0 0 40px rgba(255, 215, 0, 0.4);
+                transform: perspective(500px) rotateX(5deg) translateY(0);
+            }
+            50% { 
+                color: #FFD700;
+                text-shadow: 
+                    3px 3px 0px #B8860B,
+                    6px 6px 0px #8B6914,
+                    0 0 30px rgba(255, 215, 0, 0.9),
+                    0 0 60px rgba(255, 215, 0, 0.6),
+                    0 0 90px rgba(255, 140, 0, 0.3);
+                transform: perspective(500px) rotateX(8deg) translateY(-3px);
+            }
         }
 
-        .cta-button::before {
+        .hero-3d-text::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.8s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.1) 25%, 
+                rgba(255, 215, 0, 0.2) 50%, 
+                rgba(212, 175, 55, 0.1) 75%, 
+                transparent 100%);
+            border-radius: 10px;
             z-index: -1;
+            animation: glitterMove 2s linear infinite;
         }
 
-        .cta-button:hover::before {
-            left: 100%;
+        @keyframes glitterMove {
+            0% { background-position: -100px 0; }
+            100% { background-position: 100px 0; }
         }
 
-        .cta-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.6);
-            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
-        }
-
-        .floating-particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
-            filter: blur(5px);
-            opacity: 0.6;
-            animation: floatParticle 15s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes floatParticle {
-            0% { 
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.6;
-            }
-            25% { 
-                transform: translate(40px, -30px) rotate(90deg) scale(1.2);
-                opacity: 0.8;
-            }
-            50% { 
-                transform: translate(-20px, 20px) rotate(180deg) scale(0.8);
-                opacity: 0.4;
-            }
-            75% { 
-                transform: translate(30px, 15px) rotate(270deg) scale(1.1);
-                opacity: 0.7;
-            }
-            100% { 
-                transform: translate(0, 0) rotate(360deg) scale(1);
-                opacity: 0.6;
-            }
-        }
-
-        /* Секция "О бренде" */
-        .about {
-            padding: 8rem 2rem;
-            background: var(--color-cream-light);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about::before {
+        .hero-3d-text::after {
             content: '';
             position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 209, 102, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: rotateSlow 30s linear infinite;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                rgba(212, 175, 55, 0) 0%,
+                rgba(255, 215, 0, 0.3) 10%,
+                rgba(212, 175, 55, 0) 20%,
+                rgba(255, 215, 0, 0.3) 30%,
+                rgba(212, 175, 55, 0) 40%,
+                rgba(255, 215, 0, 0.3) 50%,
+                rgba(212, 175, 55, 0) 60%,
+                rgba(255, 215, 0, 0.3) 70%,
+                rgba(212, 175, 55, 0) 80%,
+                rgba(255, 215, 0, 0.3) 90%,
+                rgba(212, 175, 55, 0) 100%
+            );
+            border-radius: 15px;
+            z-index: -2;
+            animation: rotateGlitter 4s linear infinite;
+            opacity: 0.7;
         }
 
-        @keyframes rotateSlow {
+        @keyframes rotateGlitter {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            font-family: var(--font-family-display);
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-brown-dark);
-            position: relative;
-            display: inline-block;
-            animation: titleAppear 1s ease-out;
-        }
-
-        @keyframes titleAppear {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -544,94 +462,145 @@
             }
         }
 
-        .section-title::after {
+        @keyframes luxuryShimmer {
+            0%, 100% { 
+                filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.9)) 
+                        drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            }
+            50% { 
+                filter: drop-shadow(0 10px 40px rgba(255, 255, 255, 1)) 
+                        drop-shadow(0 0 40px rgba(255, 215, 0, 1));
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-gold);
+            padding: 1rem 3rem;
+            border: 2px solid var(--color-gold);
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 1.1s both;
+            font-family: var(--font-base);
+        }
+
+        .cta-button::before {
             content: '';
             position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-            animation: lineGrow 2s ease-out 0.5s both;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-gold);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
         }
 
-        @keyframes lineGrow {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100px;
-            }
+        .cta-button:hover::before {
+            left: 0;
         }
 
-        .section-subtitle {
-            color: var(--color-primary);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 2.5rem;
-            font-weight: 600;
-            animation: fadeInUp 1s ease-out 0.3s both;
+        .cta-button:hover {
+            color: var(--color-charcoal);
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
         }
 
-        .about p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--color-text-light);
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        /* Секция товаров */
-        .products {
+        /* === ПРЕМИАЛЬНАЯ СЕКЦИЯ "О БРЕНДЕ" === */
+        .about {
             padding: 8rem 2rem;
-            background: var(--color-cream);
+            background: #1F1B17;
             position: relative;
         }
 
-        .products::before {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: rotateSlowReverse 25s linear infinite;
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        @keyframes rotateSlowReverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
+        .section-label {
+            display: inline-block;
+            color: var(--color-gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--color-gold);
+        }
+
+        .section-label::before {
+            left: 0;
+        }
+
+        .section-label::after {
+            right: 0;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--color-text-light);
+            font-weight: 300;
+        }
+
+        /* === ПРЕМИАЛЬНЫЕ КАРТОЧКИ ТОВАРОВ === */
+        .products {
+            padding: 8rem 2rem;
+            background: #1A1612;
         }
 
         .products-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 3rem;
             margin-top: 5rem;
         }
 
         .product-card {
-            background: white;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #2A2520 0%, #352F28 100%);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.25), 0 0 0 2px rgba(201, 162, 39, 0.3);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            animation: cardFadeIn 0.8s ease-out backwards;
             position: relative;
+            border: 2px solid transparent;
         }
 
         .product-card::before {
@@ -641,201 +610,191 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 25px;
-            padding: 3px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
+            background: var(--gradient-gold);
+            opacity: 0.05;
             transition: opacity 0.6s ease;
+            z-index: 0;
+            border-radius: 15px;
         }
 
-        .product-card:hover::before {
-            opacity: 1;
-        }
-
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
-        .product-card:nth-child(7) { animation-delay: 0.7s; }
-
-        @keyframes cardFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9) rotateX(10deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1) rotateX(0);
-            }
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.8s ease;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .product-card:hover {
-            transform: translateY(-20px) scale(1.03) rotateY(5deg);
-            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.25);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 140, 0, 0.3), 0 0 0 3px rgba(255, 215, 0, 0.5);
+            border-color: rgba(255, 215, 0, 0.6);
         }
 
-        .product-image {
+        .product-card:hover::before {
+            opacity: 0.12;
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+            animation: sunRays 3s ease-in-out infinite;
+        }
+
+        @keyframes sunRays {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .product-image-container {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 209, 102, 0.05) 100%);
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.15) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4.5rem;
-            color: var(--color-primary);
-            transition: all 0.6s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .product-image::after {
+        .product-image-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            transition: left 0.8s ease;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.4) 0%, transparent 60%);
+            animation: rotateLight 15s linear infinite;
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.08);
-            color: var(--color-primary-light);
+        .product-card:hover .product-image-container::before {
+            opacity: 1;
         }
 
-        .product-card:hover .product-image::after {
-            left: 100%;
+        @keyframes rotateLight {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .product-icon {
+            font-size: 6rem;
+            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.6));
+            transition: all 0.6s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 15px 50px rgba(255, 215, 0, 0.9));
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1.15) rotate(5deg); }
+            50% { transform: scale(1.2) rotate(-5deg); }
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient-sun);
+            color: var(--color-charcoal);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 140, 0, 0.4);
         }
 
         .product-info {
             padding: 2.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .product-category {
-            color: var(--color-primary);
-            font-size: 0.95rem;
+            color: var(--color-gold);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .product-name {
-            font-family: var(--font-family-display);
+            font-family: var(--font-display);
             font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--color-brown-dark);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
             line-height: 1.3;
-            transition: color 0.3s ease;
-        }
-
-        .product-card:hover .product-name {
-            color: var(--color-primary-dark);
         }
 
         .product-description {
             color: var(--color-text-light);
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .product-price {
-            font-size: 1.6rem;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--color-primary);
-            position: relative;
-        }
-
-        .product-price::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--color-secondary);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-price::after {
-            transform: scaleX(1);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .order-button {
-            background: var(--color-primary);
-            color: white;
-            padding: 1rem 2.2rem;
-            border-radius: 30px;
+            background: var(--color-charcoal);
+            color: var(--color-white);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-        }
-
-        .order-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .order-button:hover::before {
-            left: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .order-button:hover {
-            background: var(--color-primary-light);
-            transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.6);
+            background: var(--color-gold);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
         }
 
-        .particle-burst {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
-            opacity: 0;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        @keyframes particleBurst {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 0.8;
-            }
-            100% {
-                width: 200px;
-                height: 200px;
-                opacity: 0;
-            }
-        }
-
-        /* Модальное окно */
+        /* === МОДАЛЬНОЕ ОКНО === */
         .modal {
             display: none;
             position: fixed;
@@ -844,10 +803,15 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
+            z-index: 2000;
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
             animation: fadeIn 0.4s ease;
         }
 
@@ -856,82 +820,42 @@
             to { opacity: 1; }
         }
 
-        .modal.active {
-            display: flex;
-        }
-
         .modal-content {
-            background: white;
-            border-radius: 25px;
-            max-width: 850px;
+            background: var(--color-white);
+            border-radius: 20px;
+            max-width: 900px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
+            animation: modalSlide 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
-            border-radius: 25px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .modal.active .modal-content::before {
-            opacity: 1;
-        }
-
-        @keyframes modalSlideIn {
+        @keyframes modalSlide {
             from {
                 opacity: 0;
-                transform: translateY(-60px) scale(0.9) rotateX(10deg);
+                transform: translateY(-50px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1) rotateX(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        .modal-image {
+        .modal-image-container {
             width: 100%;
             height: 450px;
-            object-fit: cover;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 209, 102, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(183, 110, 121, 0.08) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
-            color: var(--color-primary);
             position: relative;
-            overflow: hidden;
         }
 
-        .modal-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(255, 209, 102, 0.1));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .modal.active .modal-image::before {
-            opacity: 1;
+        .modal-icon {
+            font-size: 8rem;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4));
         }
 
         .modal-info {
@@ -940,272 +864,152 @@
 
         .modal-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: white;
+            top: 2rem;
+            right: 2rem;
+            background: var(--color-white);
             border: none;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
             z-index: 10;
             color: var(--color-text);
         }
 
         .modal-close:hover {
             transform: rotate(90deg) scale(1.1);
-            background: var(--color-primary);
-            color: white;
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            background: var(--color-gold);
+            color: var(--color-white);
         }
 
-        /* Контакты */
+        /* === КОНТАКТЫ === */
         .contact {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, var(--color-cream-light) 0%, rgba(255, 107, 53, 0.08) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: pulseGlow 8s ease-in-out infinite;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
+            background: #1F1B17;
         }
 
         .contact-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
-        .contact-info {
-            margin-top: 4rem;
-            display: flex;
-            flex-direction: column;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-top: 4rem;
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 1.2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .contact-item:hover::before {
-            left: 100%;
+            background: var(--color-cream);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
         .contact-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.15);
-        }
-
-        .contact-item a {
-            color: var(--color-brown);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .contact-item a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: width 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--color-primary);
-        }
-
-        .contact-item a:hover::after {
-            width: 100%;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-sun);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.4rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-charcoal);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 140, 0, 0.4);
         }
 
-        .contact-item:hover .contact-icon {
-            transform: scale(1.1) rotate(10deg);
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        .contact-item a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
-        /* Футер */
+        .contact-item a:hover {
+            color: var(--color-gold);
+        }
+
+        /* === ФУТЕР === */
         .footer {
-            background: linear-gradient(135deg, var(--color-brown-dark) 0%, #4A2F1A 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+            color: var(--color-white);
+            padding: 5rem 2rem 3rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+        .footer-logo-svg {
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
+            margin: 0 auto 2rem;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo-image {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.4));
-            margin-bottom: 1.5rem;
-            background-color: transparent;
-            animation: footerLogoGlow 6s ease-in-out infinite;
-        }
-
-        @keyframes footerLogoGlow {
-            0%, 100% { 
-                filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.4));
-                transform: scale(1);
-            }
-            50% { 
-                filter: drop-shadow(0 0 25px rgba(255, 107, 53, 0.7));
-                transform: scale(1.05);
-            }
-        }
-
-        .footer-logo-text {
-            font-family: var(--font-family-display);
+        .footer-brand {
+            font-family: var(--font-display);
             font-size: 2.5rem;
             font-weight: 700;
-            color: white;
-            letter-spacing: 2px;
-        }
-
-        .footer-logo-text span {
-            color: var(--color-secondary);
-            text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
         }
 
         .social-links {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
         }
 
         .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.3rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .social-links a:hover::before {
-            left: 100%;
+            color: var(--color-gold);
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: var(--color-primary);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            background: var(--color-gold);
+            color: var(--color-charcoal);
+            transform: translateY(-5px);
         }
 
-        /* Адаптивность */
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -1216,199 +1020,161 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--color-cream-light);
+                background: linear-gradient(135deg, #FFFFFF 0%, #FFFAEC 100%);
                 flex-direction: column;
                 padding: 2rem;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
                 display: none;
                 gap: 1.5rem;
+                border-top: 2px solid rgba(255, 215, 0, 0.3);
             }
 
             .nav.active {
                 display: flex;
             }
 
-            .logo {
-                gap: 1rem;
-            }
-
-            .logo-image {
-                width: 80px;
-                height: 80px;
-            }
-
-            .logo-text {
-                font-size: 1.8rem;
-            }
-
             .hero {
-                padding: 6rem 1.5rem;
+                padding: 8rem 2rem 6rem;
+                min-height: auto;
             }
 
-            .hero-logo-image {
-                width: 200px;
-                height: 200px;
+            .hero-logo-svg {
+                width: 280px;
+                height: 280px;
             }
 
-            .hero-logo-text {
-                font-size: 2.8rem;
+            .hero-brand-name {
+                font-size: 3rem;
+                letter-spacing: 4px;
             }
 
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
+            .hero-subtitle {
                 font-size: 1.2rem;
             }
 
+            .hero-magic-text {
+                font-size: 1.6rem;
+                padding: 0 0.5rem;
+            }
+
+            .hero-3d-text {
+                font-size: 1.4rem;
+                padding: 1rem 1.5rem;
+            }
+
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+
+            .about, .products, .contact {
+                padding: 5rem 1.5rem;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             .product-card {
-                margin: 0 auto;
-                max-width: 380px;
+                max-width: 100%;
             }
 
-            .contact-info {
-                align-items: center;
-            }
-
-            .contact-item {
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto;
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .modal-image {
+            .product-image-container {
                 height: 280px;
             }
 
+            .product-icon {
+                font-size: 4.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                margin: 1rem;
+            }
+
+            .modal-image-container {
+                height: 300px;
+            }
+
+            .modal-icon {
+                font-size: 6rem;
+            }
+
             .modal-info {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
             }
 
-            .footer-logo-image {
-                width: 120px;
-                height: 120px;
+            .footer {
+                padding: 4rem 1.5rem 2rem;
             }
 
-            .footer-logo-text {
+            .footer-logo-svg {
+                width: 100px;
+                height: 100px;
+            }
+
+            .footer-brand {
                 font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .header-content {
-                padding: 0 1rem;
+            .hero-brand-name {
+                font-size: 2rem;
+                letter-spacing: 2px;
             }
 
-            .hero {
-                padding: 5rem 1rem;
+            .hero-subtitle {
+                font-size: 1rem;
             }
 
-            .hero-logo-image {
-                width: 160px;
-                height: 160px;
+            .hero-magic-text {
+                font-size: 1.3rem;
             }
 
-            .hero-logo-text {
-                font-size: 2.2rem;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
+            .hero-3d-text {
                 font-size: 1.1rem;
+                padding: 0.8rem 1rem;
             }
 
             .cta-button {
-                padding: 1.1rem 2.5rem;
-                font-size: 1.1rem;
-            }
-
-            .about, .products, .contact {
-                padding: 5rem 1rem;
+                padding: 1rem 2.5rem;
+                font-size: 0.9rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
-            .product-info {
-                padding: 2rem;
+            .product-name {
+                font-size: 1.3rem;
             }
 
-            .product-footer {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-
-            .order-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .footer {
-                padding: 3rem 1rem;
-            }
-        }
-
-        /* Темная тема */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --color-cream: rgba(25, 25, 25, 1);
-                --color-cream-light: rgba(35, 35, 35, 1);
-                --color-text: rgba(230, 230, 230, 1);
-                --color-text-light: rgba(180, 180, 180, 1);
-                --color-brown-dark: rgba(220, 200, 180, 1);
-            }
-
-            .product-card {
-                background: var(--color-cream-light);
-            }
-
-            .modal-content {
-                background: var(--color-cream-light);
-                color: var(--color-text);
-            }
-
-            .modal-close {
-                background: var(--color-cream-light);
-                color: var(--color-text);
-            }
-
-            .contact-item {
-                background: var(--color-cream-light);
+            .product-price {
+                font-size: 1.5rem;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Хедер -->
+    <!-- ХЕДЕР -->
     <header class="header" id="header">
         <div class="header-content">
             <a href="#home" class="logo">
-                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/1111111111111111111111111.png" alt="SUNPRIDE Logo" class="logo-image">
-                <div class="logo-text">SUN<span>PRIDE</span></div>
+                <svg class="logo-svg" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <!-- SVG код логотипа остается без изменений -->
+                </svg>
+                <div class="logo-text">SUNPRIDE</div>
             </a>
             <nav class="nav" id="nav">
                 <a href="#home">Главная</a>
                 <a href="#about">О бренде</a>
-                <a href="#products">Изделия</a>
+                <a href="#products">Коллекция</a>
                 <a href="#contact">Контакты</a>
             </nav>
             <div class="menu-toggle" id="menuToggle">
@@ -1419,139 +1185,154 @@
         </div>
     </header>
 
-    <!-- Герой-секция -->
+    <!-- ГЕРОЙ-СЕКЦИЯ -->
     <section class="hero" id="home">
-        <!-- Плавающие частицы -->
-        <div class="floating-particle" style="top: 10%; left: 5%; width: 20px; height: 20px; animation-delay: 0s;"></div>
-        <div class="floating-particle" style="top: 20%; right: 10%; width: 30px; height: 30px; animation-delay: 2s;"></div>
-        <div class="floating-particle" style="bottom: 15%; left: 15%; width: 25px; height: 25px; animation-delay: 4s;"></div>
-        <div class="floating-particle" style="top: 40%; right: 20%; width: 15px; height: 15px; animation-delay: 1s;"></div>
-        <div class="floating-particle" style="bottom: 25%; right: 5%; width: 35px; height: 35px; animation-delay: 3s;"></div>
-        <div class="floating-particle" style="top: 15%; left: 20%; width: 22px; height: 22px; animation-delay: 5s;"></div>
-        
         <div class="hero-content">
-            <div class="hero-logo">
-                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/1111111111111111111111111.png" alt="SUNPRIDE Logo" class="hero-logo-image">
-                <div class="hero-logo-text">SUN<span>PRIDE</span></div>
+            <div class="hero-logo-container">
+                <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="hero-logo-svg animated-tiger-logo-hero" alt="SUNPRIDE Logo" style="width: 450px; height: 450px; object-fit: contain; filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.4)); background: transparent;">
             </div>
-            <h1>Эксклюзивные рукодельные работы от Татьяны Солнечной</h1>
-            <p>Уникальные изделия ручной работы, созданные с любовью и вдохновением. Каждое произведение — это частичка солнца в вашем доме.</p>
-            <a href="#products" class="cta-button"><span>Смотреть коллекцию</span></a>
+            <h1 class="hero-brand-name">SUNPRIDE</h1>
+            <div class="hero-subtitle">Handmade with Love</div>
+            <h2 class="hero-magic-text">Уникальные изделия ручной работы премиального качества</h2>
+            <p class="hero-3d-text">Каждая вещь создается с душой и несет частичку солнца в ваш дом</p>
+            <a href="#products" class="cta-button">Смотреть коллекцию</a>
         </div>
     </section>
 
-    <!-- О бренде -->
+    <!-- О БРЕНДЕ -->
     <section class="about" id="about">
         <div class="about-content">
-            <div class="section-subtitle">Наша философия</div>
+            <div class="section-label">Философия</div>
             <h2 class="section-title">О бренде SUNPRIDE</h2>
-            <p>SUNPRIDE — это воплощение мастерства, красоты и индивидуальности. Каждое изделие создается вручную Татьяной Солнечной с использованием натуральных материалов и авторских техник. Мы верим, что рукодельные работы несут особую энергетику и создают атмосферу уюта и гармонии в вашем доме.</p>
+            <p class="about-text">
+                SUNPRIDE — это симфония мастерства, красоты и индивидуальности. Каждое изделие создается вручную Татьяной Солнечной с использованием премиальных натуральных материалов и авторских техник. 
+                Мы верим, что рукодельные работы несут особую энергетику и создают атмосферу утонченного уюта и гармонии. Каждая деталь продумана до совершенства, каждый стежок — это история любви к прекрасному.
+            </p>
         </div>
     </section>
 
-    <!-- Изделия -->
+    <!-- КОЛЛЕКЦИЯ -->
     <section class="products" id="products">
-        <div class="products-container">
-            <div style="text-align: center;">
-                <div class="section-subtitle">Наши работы</div>
-                <h2 class="section-title">Коллекция изделий</h2>
-            </div>
+        <div class="products-container" style="text-align: center;">
+            <div class="section-label">Мастерство</div>
+            <h2 class="section-title">Эксклюзивная коллекция</h2>
 
             <div class="products-grid">
                 <!-- Панно -->
                 <div class="product-card" onclick="openModal(0)">
-                    <div class="product-image">🎨</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">🎨</div>
+                        <div class="product-badge">Premium</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Панно</div>
                         <h3 class="product-name">Настенное панно "Лесная сказка"</h3>
-                        <p class="product-description">Авторское панно ручной работы из натуральных материалов. Идеально впишется в интерьер гостиной или спальни, создавая атмосферу уюта.</p>
+                        <p class="product-description">Авторское панно из натуральных материалов. Создает атмосферу уюта и единения с природой.</p>
                         <div class="product-footer">
                             <div class="product-price">от 5 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(0)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Платье -->
                 <div class="product-card" onclick="openModal(1)">
-                    <div class="product-image">👗</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">👗</div>
+                        <div class="product-badge">Exclusive</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Одежда</div>
                         <h3 class="product-name">Авторское платье "Солнечный день"</h3>
-                        <p class="product-description">Легкое летнее платье из натуральных тканей с ручной вышивкой. Каждое платье уникально и создается под заказ с учетом ваших пожеланий.</p>
+                        <p class="product-description">Легкое летнее платье с ручной вышивкой. Создается индивидуально под ваш образ.</p>
                         <div class="product-footer">
                             <div class="product-price">от 8 900 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(1)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Чокер -->
                 <div class="product-card" onclick="openModal(2)">
-                    <div class="product-image">💎</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">💎</div>
+                        <div class="product-badge">Luxury</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Украшения</div>
                         <h3 class="product-name">Чокер "Лунная роса"</h3>
-                        <p class="product-description">Элегантный чокер ручной работы с натуральными камнями и авторским плетением. Подчеркнет вашу индивидуальность и дополнит любой образ.</p>
+                        <p class="product-description">Элегантный чокер с натуральными камнями. Подчеркивает индивидуальность.</p>
                         <div class="product-footer">
                             <div class="product-price">от 3 200 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(2)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Древо рода -->
+                <!-- Древо -->
                 <div class="product-card" onclick="openModal(3)">
-                    <div class="product-image">🌳</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">🌳</div>
+                        <div class="product-badge">Premium</div>
+                    </div>
                     <div class="product-info">
-                        <div class="product-category">Панно / Декор</div>
+                        <div class="product-category">Декор</div>
                         <h3 class="product-name">Древо рода из стабилизированного мха</h3>
-                        <p class="product-description">Уникальное семейное древо из натурального стабилизированного мха. Не требует ухода, сохраняет свежесть годами. Идеальный подарок для семьи.</p>
+                        <p class="product-description">Уникальное семейное древо. Не требует ухода, сохраняет красоту годами.</p>
                         <div class="product-footer">
                             <div class="product-price">от 12 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(3)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Панно флористическое -->
+                <!-- Флористика -->
                 <div class="product-card" onclick="openModal(4)">
-                    <div class="product-image">🌸</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">🌸</div>
+                        <div class="product-badge">Exclusive</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Панно</div>
                         <h3 class="product-name">Флористическое панно "Весенний сад"</h3>
-                        <p class="product-description">Нежное панно из стабилизированных цветов и мха. Сохраняет естественную красоту растений на долгие годы без специального ухода.</p>
+                        <p class="product-description">Нежное панно из стабилизированных цветов. Естественная красота на годы.</p>
                         <div class="product-footer">
                             <div class="product-price">от 6 800 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(4)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Вечернее платье -->
                 <div class="product-card" onclick="openModal(5)">
-                    <div class="product-image">✨</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">✨</div>
+                        <div class="product-badge">Luxury</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Одежда</div>
                         <h3 class="product-name">Вечернее платье "Звездная ночь"</h3>
-                        <p class="product-description">Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры.</p>
+                        <p class="product-description">Роскошное платье с ручной вышивкой бисером. Индивидуальный пошив.</p>
                         <div class="product-footer">
                             <div class="product-price">от 15 900 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(5)">Заказать</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Шопер -->
                 <div class="product-card" onclick="openModal(6)">
-                    <div class="product-image">👜</div>
+                    <div class="product-image-container">
+                        <div class="product-icon">👜</div>
+                        <div class="product-badge">Premium</div>
+                    </div>
                     <div class="product-info">
                         <div class="product-category">Аксессуары</div>
                         <h3 class="product-name">Эко-шопер "Солнечный луч"</h3>
-                        <p class="product-description">Стильный и практичный шопер ручной работы из натурального хлопка. Уникальный дизайн с авторской вышивкой. Идеальный спутник для покупок и прогулок.</p>
+                        <p class="product-description">Стильный шопер из натурального хлопка с авторской вышивкой.</p>
                         <div class="product-footer">
                             <div class="product-price">от 2 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); createParticleBurst(event)">Заказать</button>
+                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(6)">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -1559,66 +1340,61 @@
         </div>
     </section>
 
-    <!-- Контакты -->
+    <!-- КОНТАКТЫ -->
     <section class="contact" id="contact">
         <div class="contact-content">
-            <div class="section-subtitle">Свяжитесь с нами</div>
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-info">
+            <div class="section-label">Связь</div>
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-grid">
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+                    <h3>Telegram</h3>
                     <a href="https://t.me/Tan4ik77G" target="_blank">@Tan4ik77G</a>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
                     <a href="mailto:sunpride@example.com">sunpride@example.com</a>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Локация</h3>
                     <span>Реутов, Московская область</span>
                 </div>
             </div>
-            <p style="margin-top: 2rem; color: var(--color-text-light);">
-                Для заказа изделия или консультации свяжитесь с нами любым удобным способом. Мы будем рады воплотить ваши идеи в жизнь!
+            <p style="margin-top: 3rem; font-weight: 300;">
+                Для заказа или консультации свяжитесь любым удобным способом. Мы воплотим ваши идеи в жизнь!
             </p>
         </div>
     </section>
 
-    <!-- Футер -->
+    <!-- ФУТЕР -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://raw.githubusercontent.com/makaka119911-oss/SUNPride/main/1111111111111111111111111.png" alt="SUNPRIDE Logo" class="footer-logo-image">
-                <div class="footer-logo-text">SUN<span>PRIDE</span></div>
-            </div>
-            <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
-            <p>&copy; 2025 SUNPRIDE. Все права защищены.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
-                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
+        <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo.png" class="footer-logo-svg animated-tiger-logo" alt="SUNPRIDE Logo" style="width: 200px; height: 200px; object-fit: contain; filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5)); background: transparent;">
+        <div class="footer-brand">SUNPRIDE</div>
+        <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
+        <p>&copy; 2025 SUNPRIDE. Все права защищены.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-vk"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
 
-    <!-- Модальное окно -->
+    <!-- МОДАЛЬНОЕ ОКНО -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="modal-image" id="modalImage"></div>
+            <div class="modal-image-container">
+                <div class="modal-icon" id="modalIcon"></div>
+            </div>
             <div class="modal-info">
                 <div class="product-category" id="modalCategory"></div>
                 <h3 class="product-name" id="modalName"></h3>
                 <p class="product-description" id="modalDescription"></p>
-                <div style="margin-top: 2rem;">
+                <div style="margin-top: 2.5rem;">
                     <div class="product-price" id="modalPrice" style="margin-bottom: 1rem;"></div>
-                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">Для оформления заказа свяжитесь с нами по телефону или напишите на электронную почту.</p>
+                    <p style="color: var(--color-text-light); margin-bottom: 2rem;">Для оформления заказа свяжитесь с нами удобным способом.</p>
                     <a href="#contact" class="cta-button" onclick="closeModal()">Связаться с нами</a>
                 </div>
             </div>
@@ -1626,7 +1402,6 @@
     </div>
 
     <script>
-        // Данные о продуктах
         const products = [
             {
                 icon: '🎨',
@@ -1653,28 +1428,28 @@
                 icon: '🌳',
                 category: 'Панно / Декор',
                 name: 'Древо рода из стабилизированного мха',
-                description: 'Уникальное семейное древо из натурального стабилизированного мха. Размеры: от 40x50 см до 100x120 см. Не требует полива и специального ухода, сохраняет свежесть и яркость годами. Возможно добавление фотографий членов семьи, имен, дат. Идеальный подарок для семьи на юбилей, свадьбу или новоселье.',
+                description: 'Уникальное семейное древо из натурального стабилизированного мха. Размеры: от 40x50 см до 100x120 см. Не требует полива и специального ухода, сохраняет свежесть и яркость годами. Возможно добавление фотографий членов семьи, имен, дат. Идеальный подарок для семьи.',
                 price: 'от 12 500 ₽'
             },
             {
                 icon: '🌸',
                 category: 'Панно',
                 name: 'Флористическое панно "Весенний сад"',
-                description: 'Нежное панно из стабилизированных цветов и мха. Размер 50x70 см. Сохраняет естественную красоту растений на долгие годы без специального ухода. В композиции использованы розы, гортензии, лаванда, эвкалипт. Каждое панно уникально и создается вручную.',
+                description: 'Нежное панно из стабилизированных цветов и мха. Размер 50x70 см. Сохраняет естественную красоту растений на долгие годы без специального ухода. В композиции использованы розы, гортензии, лаванда, эвкалипт.',
                 price: 'от 6 800 ₽'
             },
             {
                 icon: '✨',
                 category: 'Одежда',
                 name: 'Вечернее платье "Звездная ночь"',
-                description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры. Возможен выбор цвета, длины, степени открытости. Ткань: шелк, атлас или бархат премиум-класса. Время изготовления: 3-4 недели. Идеально для особых случаев.',
+                description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками. Создается индивидуально, учитывая все особенности вашей фигуры. Возможен выбор цвета, длины, степени открытости. Ткань: шелк, атлас или бархат премиум-класса. Время изготовления: 3-4 недели.',
                 price: 'от 15 900 ₽'
             },
             {
                 icon: '👜',
                 category: 'Аксессуары',
                 name: 'Эко-шопер "Солнечный луч"',
-                description: 'Стильный и практичный шопер ручной работы из натурального хлопка. Размер 40x40 см, длинные ручки для удобного ношения. Уникальный дизайн с авторской вышивкой солнечных мотивов. Вместительный и прочный, идеальный спутник для покупок и прогулок. Экологичная альтернатива пластиковым пакетам.',
+                description: 'Стильный и практичный шопер ручной работы из натурального хлопка. Размер 40x40 см, длинные ручки для удобного ношения. Уникальный дизайн с авторской вышивкой солнечных мотивов. Экологичная альтернатива пластиковым пакетам.',
                 price: 'от 2 500 ₽'
             }
         ];
@@ -1688,7 +1463,6 @@
             menuToggle.classList.toggle('active');
         });
 
-        // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
@@ -1698,19 +1472,16 @@
 
         // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Изменение хедера при прокрутке
+        // Хедер при прокрутке
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -1725,7 +1496,7 @@
             const product = products[index];
             const modal = document.getElementById('modal');
             
-            document.getElementById('modalImage').textContent = product.icon;
+            document.getElementById('modalIcon').textContent = product.icon;
             document.getElementById('modalCategory').textContent = product.category;
             document.getElementById('modalName').textContent = product.name;
             document.getElementById('modalDescription').textContent = product.description;
@@ -1741,66 +1512,22 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Закрытие модального окна при клике вне его
         document.getElementById('modal').addEventListener('click', (e) => {
             if (e.target.id === 'modal') {
                 closeModal();
             }
         });
 
-        // Закрытие модального окна по Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Анимация "взрыва частиц" при нажатии на кнопку заказа
-        function createParticleBurst(event) {
-            const button = event.target;
-            const burst = document.createElement('div');
-            burst.classList.add('particle-burst');
-            
-            const rect = button.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-            
-            burst.style.left = `${x}px`;
-            burst.style.top = `${y}px`;
-            
-            document.body.appendChild(burst);
-            
-            // Запускаем анимацию
-            setTimeout(() => {
-                burst.style.animation = 'particleBurst 0.8s ease-out forwards';
-            }, 10);
-            
-            // Удаляем элемент после завершения анимации
-            setTimeout(() => {
-                burst.remove();
-            }, 800);
-            
-            // Показываем сообщение о добавлении в корзину
-            setTimeout(() => {
-                alert('Товар добавлен в корзину! С вами свяжутся для уточнения деталей заказа.');
-            }, 400);
+        function orderProduct(index) {
+            const product = products[index];
+            alert(`Отлично! Вы выбрали "${product.name}". Мы свяжемся с вами в ближайшее время для уточнения деталей заказа!`);
         }
-
-        // Добавляем дополнительные плавающие частицы при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            const hero = document.querySelector('.hero');
-            for (let i = 0; i < 8; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('floating-particle');
-                particle.style.width = `${10 + Math.random() * 25}px`;
-                particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `${Math.random() * 6}s`;
-                particle.style.background = `radial-gradient(circle, ${i % 2 === 0 ? 'var(--color-primary)' : 'var(--color-secondary)'} 0%, transparent 70%)`;
-                hero.appendChild(particle);
-            }
-        });
     </script>
 </body>
 </html>

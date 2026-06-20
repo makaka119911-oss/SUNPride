@@ -2,1413 +2,155 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNPRIDE - Эксклюзивные рукодельные работы</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-        
-        :root {
-            /* Палитра под логотип (темное золото + бронза + черный) */
-            --color-gold: #C9A227;
-            --color-gold-light: #D4AF37;
-            --color-gold-dark: #8B6914;
-            --color-orange: #CC7000;
-            --color-amber: #D4A017;
-            --color-sun-yellow: #D4A017;
-            --color-cream: #2A2520;
-            --color-cream-dark: #352F28;
-            --color-charcoal: #1A1A1A;
-            --color-charcoal-light: #2A2A2A;
-            --color-text: #E8DCC8;
-            --color-text-light: #B8A88A;
-            --color-white: #FFFFFF;
-            
-            /* Темные золотые градиенты */
-            --gradient-gold: linear-gradient(135deg, #C9A227 0%, #B8860B 50%, #8B6914 100%);
-            --gradient-sun: linear-gradient(135deg, #D4AF37 0%, #C9A227 30%, #B8860B 70%, #8B6914 100%);
-            --gradient-luxury: linear-gradient(135deg, #D4AF37 0%, #C9A227 50%, #B8860B 100%);
-            --gradient-overlay: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(139, 105, 20, 0.1) 100%);
-            
-            /* Типографика */
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-base: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            
-            /* Солнечные эффекты */
-            --shadow-luxury: 0 20px 60px rgba(255, 215, 0, 0.4);
-            --shadow-premium: 0 10px 40px rgba(255, 140, 0, 0.25);
-            --shadow-soft: 0 5px 20px rgba(255, 215, 0, 0.15);
-            --shadow-glow: 0 0 40px rgba(255, 215, 0, 0.6);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-base);
-            color: var(--color-text);
-            background-color: #1A1612;
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-weight: 400;
-            font-size: 16px; /* Базовый размер шрифта для лучшей читаемости */
-        }
-
-        /* === ПРЕМИАЛЬНЫЙ ХЕДЕР === */
-        .header {
-            background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(42, 37, 32, 0.95) 100%);
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 30px rgba(201, 162, 39, 0.3);
-            backdrop-filter: blur(15px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 2px solid rgba(201, 162, 39, 0.4);
-        }
-
-        .header.scrolled {
-            padding: 0.7rem 0;
-            background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(42, 37, 32, 0.95) 100%);
-            box-shadow: 0 5px 40px rgba(201, 162, 39, 0.5);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .logo-svg {
-            width: 80px; /* Увеличил логотип в хедере */
-            height: 80px;
-            filter: drop-shadow(0 5px 25px rgba(255, 215, 0, 0.6));
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            flex-shrink: 0;
-        }
-
-        /* Анимация тигрицы как в MGM */
-        @keyframes tigerBreathing {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-                filter: drop-shadow(0 5px 25px rgba(255, 215, 0, 0.6));
-            }
-            50% { 
-                transform: translateY(-5px) scale(1.02);
-                filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.9));
-            }
-        }
-
-        .animated-tiger-logo {
-            animation: tigerBreathing 4s ease-in-out infinite;
-        }
-
-        .logo:hover .logo-svg {
-            transform: scale(1.05);
-            filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.8));
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 1.8rem; /* Увеличил текст логотипа */
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-
-        .logo-text::after {
-            content: 'HANDMADE';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            font-size: 0.4rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: var(--color-text-light);
-            -webkit-text-fill-color: var(--color-text-light);
-        }
-
-        .nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-gold);
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav a:hover {
-            color: var(--color-gold);
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--color-gold);
-            transition: all 0.3s ease;
-        }
-
-        /* === СОЛНЕЧНЫЙ ГЕРОЙ === */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, #3A2F1F 0%, #5C4A2C 20%, #8B6914 40%, #C9A227 60%, #8B6914 80%, #5C4A2C 100%);
-            padding: 12rem 1rem 6rem;
-            text-align: center;
-            overflow: hidden;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, rgba(255, 140, 0, 0.15) 40%, transparent 70%);
-            animation: floatSlow 30s ease-in-out infinite;
-            filter: blur(50px);
-        }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(50px, -30px) rotate(10deg); }
-            66% { transform: translate(-30px, 50px) rotate(-5deg); }
-        }
-
-        .hero-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-logo-container {
-            margin-bottom: 2rem;
-            animation: fadeInScale 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .hero-logo-svg {
-            width: 450px; /* Увеличил логотип в герое */
-            height: 450px;
-            filter: drop-shadow(0 15px 50px rgba(255, 215, 0, 0.8));
-            animation: gentleFloat 6s ease-in-out infinite;
-            margin: 0 auto 2rem;
-        }
-
-        /* Усиленная анимация для героя */
-        .animated-tiger-logo-hero {
-            animation: tigerBreathing 4s ease-in-out infinite, gentleFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.02); }
-        }
-
-        .hero-brand-name {
-            font-family: var(--font-display);
-            font-size: 4.5rem; /* Увеличил название бренда */
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: none;
-            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.9));
-            animation: fadeInUp 1s ease 0.3s both, luxuryShimmer 3s ease-in-out infinite;
-            position: relative;
-        }
-
-        .hero-brand-name::before {
-            content: 'SUNPRIDE';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.8) 25%, 
-                rgba(255, 215, 0, 0.9) 50%, 
-                rgba(255, 255, 255, 0.8) 75%, 
-                transparent 100%);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmerSlide 4s linear infinite;
-            z-index: 2;
-        }
-
-        .hero-brand-name::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
-            filter: blur(30px);
-            animation: glowPulse 2s ease-in-out infinite;
-            z-index: -1;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes luxuryShimmer {
-            0%, 100% { 
-                filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.9)) 
-                        drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
-            }
-            50% { 
-                filter: drop-shadow(0 10px 40px rgba(255, 255, 255, 1)) 
-                        drop-shadow(0 0 40px rgba(255, 215, 0, 1));
-            }
-        }
-
-        @keyframes shimmerSlide {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { 
-                opacity: 0.6;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            text-shadow: none;
-            filter: drop-shadow(0 6px 25px rgba(255, 215, 0, 0.8));
-            animation: fadeInUp 1s ease 0.5s both;
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.3;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            text-shadow: none;
-            filter: drop-shadow(0 6px 25px rgba(255, 215, 0, 0.8));
-            animation: fadeInUp 1s ease 0.7s both;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFE4B5 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
-            font-weight: 500;
-            text-shadow: none;
-            filter: drop-shadow(0 5px 20px rgba(255, 215, 0, 0.7));
-            animation: fadeInUp 1s ease 0.9s both;
-        }
-
-        /* УЛУЧШЕННАЯ КНОПКА CTA ДЛЯ КОМПЬЮТЕРНОЙ ВЕРСИИ */
-        .cta-button {
-            display: inline-block;
-            background: var(--color-gold); /* Сделал фон золотым по умолчанию */
-            color: var(--color-charcoal); /* Текст темным для контраста */
-            padding: 1.2rem 3rem; /* Увеличил размер кнопки */
-            border: 2px solid var(--color-gold);
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: 600; /* Сделал текст жирнее */
-            font-size: 1.1rem; /* Увеличил размер текста */
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1s ease 1.1s both;
-            font-family: var(--font-base);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5); /* Добавил тень для выделения */
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--color-charcoal); /* Инвертируем цвета при наведении */
-            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            left: 0;
-        }
-
-        .cta-button:hover {
-            color: var(--color-gold); /* Текст становится золотым при наведении */
-            border-color: var(--color-gold);
-            transform: translateY(-5px); /* Более заметное поднятие */
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7); /* Усиленная тень при наведении */
-        }
-
-        /* === ПРЕМИАЛЬНАЯ СЕКЦИЯ "О БРЕНДЕ" === */
-        .about {
-            padding: 6rem 1.5rem;
-            background: #1F1B17;
-            position: relative;
-        }
-
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: var(--color-gold);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            position: relative;
-            padding: 0 1.5rem;
-        }
-
-        .section-label::before,
-        .section-label::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 30px;
-            height: 1px;
-            background: var(--color-gold);
-        }
-
-        .section-label::before {
-            left: 0;
-        }
-
-        .section-label::after {
-            right: 0;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 2rem;
-            line-height: 1.2;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-text-light);
-            font-weight: 300;
-        }
-
-        /* === ПРЕМИАЛЬНЫЕ КАРТОЧКИ ТОВАРОВ === */
-        .products {
-            padding: 6rem 1.5rem;
-            background: #1A1612;
-        }
-
-        .products-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .product-card {
-            background: linear-gradient(135deg, #2A2520 0%, #352F28 100%);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.25), 0 0 0 2px rgba(201, 162, 39, 0.3);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            border: 2px solid transparent;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-gold);
-            opacity: 0.05;
-            transition: opacity 0.6s ease;
-            z-index: 0;
-            border-radius: 15px;
-        }
-
-        .product-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: all 0.8s ease;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .product-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 140, 0, 0.3), 0 0 0 3px rgba(255, 215, 0, 0.5);
-            border-color: rgba(255, 215, 0, 0.6);
-        }
-
-        .product-card:hover::before {
-            opacity: 0.12;
-        }
-
-        .product-card:hover::after {
-            opacity: 1;
-            animation: sunRays 3s ease-in-out infinite;
-        }
-
-        @keyframes sunRays {
-            0%, 100% { 
-                transform: rotate(0deg) scale(1);
-                opacity: 0.6;
-            }
-            50% { 
-                transform: rotate(180deg) scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        .product-image-container {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 140, 0, 0.15) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.4) 0%, transparent 60%);
-            animation: rotateLight 15s linear infinite;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .product-card:hover .product-image-container::before {
-            opacity: 1;
-        }
-
-        @keyframes rotateLight {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .product-icon {
-            font-size: 5rem;
-            filter: drop-shadow(0 8px 30px rgba(255, 215, 0, 0.6));
-            transition: all 0.6s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .product-card:hover .product-icon {
-            transform: scale(1.15) rotate(5deg);
-            filter: drop-shadow(0 15px 50px rgba(255, 215, 0, 0.9));
-            animation: iconPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1.15) rotate(5deg); }
-            50% { transform: scale(1.2) rotate(-5deg); }
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--gradient-sun);
-            color: var(--color-charcoal);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 140, 0, 0.4);
-        }
-
-        .product-info {
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-category {
-            color: var(--color-gold);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .product-name {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .product-description {
-            color: var(--color-text-light);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            font-size: 0.95rem;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .product-price {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .order-button {
-            background: var(--color-charcoal);
-            color: var(--color-white);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .order-button:hover {
-            background: var(--color-gold);
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
-        }
-
-        /* === МОДАЛЬНОЕ ОКНО === */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal.active {
-            display: flex;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: var(--color-white);
-            border-radius: 20px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlide 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-image-container {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(183, 110, 121, 0.08) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .modal-icon {
-            font-size: 6rem;
-            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4));
-        }
-
-        .modal-info {
-            padding: 2.5rem;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: var(--color-white);
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 10;
-            color: var(--color-text);
-        }
-
-        .modal-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: var(--color-gold);
-            color: var(--color-white);
-        }
-
-        /* === КОНТАКТЫ === */
-        .contact {
-            padding: 6rem 1.5rem;
-            background: #1F1B17;
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            background: var(--color-cream);
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-sun);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.3rem;
-            color: var(--color-charcoal);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 140, 0, 0.4);
-        }
-
-        .contact-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-        }
-
-        .contact-item a, .contact-item span {
-            color: var(--color-text-light);
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--color-gold);
-        }
-
-        /* === ФУТЕР === */
-        .footer {
-            background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
-            color: var(--color-white);
-            padding: 4rem 1.5rem 2.5rem;
-            text-align: center;
-        }
-
-        .footer-logo-svg {
-            width: 200px; /* Увеличил логотип в футере */
-            height: 200px;
-            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
-            margin: 0 auto 1.5rem;
-        }
-
-        .footer-brand {
-            font-family: var(--font-display);
-            font-size: 2.5rem; /* Увеличил текст бренда в футере */
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer p {
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-gold);
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--color-gold);
-            color: var(--color-charcoal);
-            transform: translateY(-5px);
-        }
-
-        /* === АДАПТИВНОСТЬ === */
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                padding: 0 1rem;
-            }
-            
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: linear-gradient(180deg, rgba(26, 22, 18, 0.98) 0%, rgba(42, 37, 32, 0.95) 100%);
-                flex-direction: column;
-                padding: 1.5rem;
-                box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-                display: none;
-                gap: 1rem;
-                border-top: 2px solid rgba(255, 215, 0, 0.3);
-                backdrop-filter: blur(15px);
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .hero {
-                padding: 8rem 1rem 4rem;
-                min-height: auto;
-            }
-
-            .hero-logo-svg {
-                width: 250px; /* Уменьшил для мобильных, но больше чем было */
-                height: 250px;
-            }
-
-            .hero-brand-name {
-                font-size: 3rem; /* Уменьшил для мобильных, но больше чем было */
-                letter-spacing: 3px;
-            }
-
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .about, .products, .contact {
-                padding: 4rem 1rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .product-card {
-                max-width: 100%;
-            }
-
-            .product-image-container {
-                height: 220px;
-            }
-
-            .product-icon {
-                font-size: 3.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .modal-content {
-                max-width: 95%;
-                margin: 0.5rem;
-            }
-
-            .modal-image-container {
-                height: 250px;
-            }
-
-            .modal-icon {
-                font-size: 4rem;
-            }
-
-            .modal-info {
-                padding: 1.5rem;
-            }
-
-            .footer {
-                padding: 3rem 1rem 2rem;
-            }
-
-            .footer-logo-svg {
-                width: 120px; /* Уменьшил для мобильных, но больше чем было */
-                height: 120px;
-            }
-
-            .footer-brand {
-                font-size: 2rem; /* Уменьшил для мобильных, но больше чем было */
-            }
-            
-            /* Для мобильных возвращаем первоначальный стиль кнопки */
-            .cta-button {
-                background: transparent;
-                color: var(--color-gold);
-                padding: 1rem 2.5rem;
-                font-size: 0.9rem;
-                box-shadow: none;
-            }
-            
-            .cta-button:hover {
-                background: transparent;
-                color: var(--color-charcoal);
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-brand-name {
-                font-size: 2.5rem;
-            }
-
-            .hero h1 {
-                font-size: 1.4rem;
-            }
-            
-            .hero p {
-                font-size: 0.95rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.9rem;
-            }
-
-            .cta-button {
-                padding: 0.9rem 2rem;
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .product-name {
-                font-size: 1.2rem;
-            }
-
-            .product-price {
-                font-size: 1.4rem;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem; /* Уменьшил для очень маленьких экранов */
-            }
-            
-            .logo-svg {
-                width: 60px; /* Уменьшил для очень маленьких экранов */
-                height: 60px;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SUNPRIDE Macramé — макрамé ручной работы</title>
+    <meta name="description" content="Sun Pride Macramé — эксклюзивные изделия и мастер-классы от Татьяны Солнечной. Ощути себя Богиней.">
+    <meta name="theme-color" content="#1a1612">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=1">
+    <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
 </head>
 <body>
-    <!-- ХЕДЕР -->
     <header class="header" id="header">
-        <div class="header-content">
-            <a href="#home" class="logo">
-                <svg class="logo-svg" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                    <!-- SVG код логотипа остается без изменений -->
-                </svg>
-                <div class="logo-text">SUNPRIDE</div>
+        <div class="header__inner">
+            <a class="logo" href="#home">
+                <img class="logo__img" src="assets/img/logo-tiger.png" width="48" height="48" alt="">
+                <span class="logo__text">SUNPRIDE</span>
             </a>
-            <nav class="nav" id="nav">
-                <a href="#home">Главная</a>
-                <a href="#about">О бренде</a>
-                <a href="#products">Коллекция</a>
-                <a href="#contact">Контакты</a>
+            <nav class="nav" aria-label="Меню">
+                <a href="#home" data-goto="home">Главная</a>
+                <a href="#about" data-goto="about">О бренде</a>
+                <a href="#works" data-goto="works">Работы</a>
+                <a href="#contact" data-goto="contact">Связь</a>
             </nav>
-            <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a class="btn btn--gold btn--sm" href="https://t.me/Tan4ik77G" target="_blank" rel="noopener noreferrer">Заказать</a>
+            <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobileNav">
+                <span></span><span></span><span></span>
             </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav" hidden>
+            <a href="#home" data-goto="home">Главная</a>
+            <a href="#about" data-goto="about">О бренде</a>
+            <a href="#works" data-goto="works">Работы</a>
+            <a href="#contact" data-goto="contact">Связь</a>
         </div>
     </header>
 
-    <!-- ГЕРОЙ-СЕКЦИЯ -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-logo-container">
-                <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo3.png" class="hero-logo-svg animated-tiger-logo-hero" alt="SUNPRIDE Logo" style="width: 450px; height: 450px; object-fit: contain; filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.4)); background: transparent;">
-            </div>
-            <h1 class="hero-brand-name" data-text="SUNPRIDE">SUNPRIDE</h1>
-            <div class="hero-subtitle">Handmade with Love</div>
-            <h1>Эксклюзивные рукодельные работы от Татьяны Солнечной</h1>
-            <p>Уникальные изделия ручной работы премиального качества. Каждая вещь создается с душой и несет частичку солнца в ваш дом.</p>
-            <a href="#products" class="cta-button">Смотреть коллекцию</a>
-        </div>
-    </section>
-
-    <!-- О БРЕНДЕ -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="section-label">Философия</div>
-            <h2 class="section-title">О бренде SUNPRIDE</h2>
-            <p class="about-text">
-                SUNPRIDE — это симфония мастерства, красоты и индивидуальности. Каждое изделие создается вручную Татьяной Солнечной с использованием премиальных натуральных материалов и авторских техник. 
-                Мы верим, что рукодельные работы несут особую энергетику и создают атмосферу утонченного уюта и гармонии. Каждая деталь продумана до совершенства, каждый стежок — это история любви к прекрасному.
-            </p>
-        </div>
-    </section>
-
-    <!-- КОЛЛЕКЦИЯ -->
-    <section class="products" id="products">
-        <div class="products-container" style="text-align: center;">
-            <div class="section-label">Мастерство</div>
-            <h2 class="section-title">Эксклюзивная коллекция</h2>
-
-            <div class="products-grid">
-                <!-- Панно -->
-                <div class="product-card" onclick="openModal(0)">
-                    <div class="product-image-container">
-                        <div class="product-icon">🎨</div>
-                        <div class="product-badge">Premium</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Панно</div>
-                        <h3 class="product-name">Настенное панно "Лесная сказка"</h3>
-                        <p class="product-description">Авторское панно из натуральных материалов. Создает атмосферу уюта и единения с природой.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 5 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(0)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Платье -->
-                <div class="product-card" onclick="openModal(1)">
-                    <div class="product-image-container">
-                        <div class="product-icon">👗</div>
-                        <div class="product-badge">Exclusive</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Одежда</div>
-                        <h3 class="product-name">Авторское платье "Солнечный день"</h3>
-                        <p class="product-description">Легкое летнее платье с ручной вышивкой. Создается индивидуально под ваш образ.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 8 900 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(1)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Чокер -->
-                <div class="product-card" onclick="openModal(2)">
-                    <div class="product-image-container">
-                        <div class="product-icon">💎</div>
-                        <div class="product-badge">Luxury</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Украшения</div>
-                        <h3 class="product-name">Чокер "Лунная роса"</h3>
-                        <p class="product-description">Элегантный чокер с натуральными камнями. Подчеркивает индивидуальность.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 3 200 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(2)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Древо -->
-                <div class="product-card" onclick="openModal(3)">
-                    <div class="product-image-container">
-                        <div class="product-icon">🌳</div>
-                        <div class="product-badge">Premium</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Декор</div>
-                        <h3 class="product-name">Древо рода из стабилизированного мха</h3>
-                        <p class="product-description">Уникальное семейное древо. Не требует ухода, сохраняет красоту годами.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 12 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(3)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Флористика -->
-                <div class="product-card" onclick="openModal(4)">
-                    <div class="product-image-container">
-                        <div class="product-icon">🌸</div>
-                        <div class="product-badge">Exclusive</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Панно</div>
-                        <h3 class="product-name">Флористическое панно "Весенний сад"</h3>
-                        <p class="product-description">Нежное панно из стабилизированных цветов. Естественная красота на годы.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 6 800 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(4)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Вечернее платье -->
-                <div class="product-card" onclick="openModal(5)">
-                    <div class="product-image-container">
-                        <div class="product-icon">✨</div>
-                        <div class="product-badge">Luxury</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Одежда</div>
-                        <h3 class="product-name">Вечернее платье "Звездная ночь"</h3>
-                        <p class="product-description">Роскошное платье с ручной вышивкой бисером. Индивидуальный пошив.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 15 900 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(5)">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Шопер -->
-                <div class="product-card" onclick="openModal(6)">
-                    <div class="product-image-container">
-                        <div class="product-icon">👜</div>
-                        <div class="product-badge">Premium</div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Аксессуары</div>
-                        <h3 class="product-name">Эко-шопер "Солнечный луч"</h3>
-                        <p class="product-description">Стильный шопер из натурального хлопка с авторской вышивкой.</p>
-                        <div class="product-footer">
-                            <div class="product-price">от 2 500 ₽</div>
-                            <button class="order-button" onclick="event.stopPropagation(); orderProduct(6)">Заказать</button>
-                        </div>
+    <div class="fp swiper" id="fullpage">
+        <div class="swiper-wrapper">
+            <!-- HOME -->
+            <div class="swiper-slide fp__slide" data-hash="home">
+                <div class="fp__bg" data-swiper-parallax="-20%" data-swiper-parallax-scale="1.12"
+                     style="background-image: url(assets/img/hero-poster.jpg)"></div>
+                <div class="fp__overlay"></div>
+                <div class="fp__content container">
+                    <p class="eyebrow" data-swiper-parallax-y="-60" data-swiper-parallax-opacity="0">Macramé · с 2023</p>
+                    <h1 data-swiper-parallax-y="-80" data-swiper-parallax-opacity="0">
+                        Ощути себя <em>Богиней</em>
+                    </h1>
+                    <p class="fp__lead" data-swiper-parallax-y="-100" data-swiper-parallax-opacity="0">
+                        Эксклюзивные изделия макрамé ручной работы — от комплектов с бахромой до платьев для фотосессий у моря.
+                    </p>
+                    <div class="fp__actions" data-swiper-parallax-y="-120" data-swiper-parallax-opacity="0">
+                        <a class="btn btn--gold" href="#works" data-goto="works">Смотреть работы</a>
+                        <a class="btn btn--ghost" href="https://vk.com/sunpride_handmade" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- КОНТАКТЫ -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <div class="section-label">Связь</div>
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fab fa-telegram"></i></div>
-                    <h3>Telegram</h3>
-                    <a href="https://t.me/Tan4ik77G" target="_blank">@Tan4ik77G</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <h3>Email</h3>
-                    <a href="mailto:sunpride@example.com">sunpride@example.com</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3>Локация</h3>
-                    <span>Реутов, Московская область</span>
+            <!-- ABOUT -->
+            <div class="swiper-slide fp__slide" data-hash="about">
+                <div class="fp__bg" data-swiper-parallax="-20%" data-swiper-parallax-scale="1.12"
+                     style="background-image: url(assets/img/about-tatyana.jpg)"></div>
+                <div class="fp__overlay fp__overlay--warm"></div>
+                <div class="fp__content container fp__content--split">
+                    <div class="about-box" data-swiper-parallax-y="-50" data-swiper-parallax-opacity="0">
+                        <p class="eyebrow">Философия</p>
+                        <h2>Магия в каждом узле</h2>
+                        <p>Татьяна Солнечная плетёт платья, топы и образы на заказ — каждая нить с любовью. Коллекция «Богини современности» для уверенности на фотосессии, у моря или на особом вечере.</p>
+                        <ul class="tags">
+                            <li>ручная работа</li>
+                            <li>на заказ</li>
+                            <li>премиум материалы</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <p style="margin-top: 3rem; font-weight: 300;">
-                Для заказа или консультации свяжитесь любым удобным способом. Мы воплотим ваши идеи в жизнь!
-            </p>
-        </div>
-    </section>
 
-    <!-- ФУТЕР -->
-    <footer class="footer">
-        <img src="https://makaka119911-oss.github.io/SUNPride/SUNPRIDE_logo3.png" class="footer-logo-svg animated-tiger-logo" alt="SUNPRIDE Logo" style="width: 200px; height: 200px; object-fit: contain; filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5)); background: transparent;">
-        <div class="footer-brand">SUNPRIDE</div>
-        <p>Эксклюзивные рукодельные работы от Татьяны Солнечной</p>
-        <p>&copy; 2025 SUNPRIDE. Все права защищены.</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-vk"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </footer>
-
-    <!-- МОДАЛЬНОЕ ОКНО -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div class="modal-image-container">
-                <div class="modal-icon" id="modalIcon"></div>
+            <!-- WORKS -->
+            <div class="swiper-slide fp__slide" data-hash="works">
+                <div class="fp__bg" data-swiper-parallax="-20%" data-swiper-parallax-scale="1.12"
+                     style="background-image: url(assets/img/work-gold-set.jpg)"></div>
+                <div class="fp__overlay fp__overlay--dark"></div>
+                <div class="fp__content container">
+                    <div class="section-head" data-swiper-parallax-y="-40" data-swiper-parallax-opacity="0">
+                        <p class="eyebrow">Портфолио</p>
+                        <h2>Примеры работ</h2>
+                    </div>
+                    <div class="works-grid" data-slider-wheel-ignore data-swiper-parallax-y="-60" data-swiper-parallax-opacity="0">
+                        <button type="button" class="work-card" data-lightbox="assets/img/work-pink.jpg" data-caption="Розовая нежность">
+                            <img src="assets/img/work-pink.jpg" alt="Розовый комплект" loading="lazy">
+                            <span>Розовая нежность</span>
+                        </button>
+                        <button type="button" class="work-card" data-lightbox="assets/img/work-gold-set.jpg" data-caption="Золотой комплект">
+                            <img src="assets/img/work-gold-set.jpg" alt="Золотой комплект" loading="lazy">
+                            <span>Золотой комплект</span>
+                        </button>
+                        <button type="button" class="work-card" data-lightbox="assets/img/work-mama-daughter.jpg" data-caption="Мама и дочка">
+                            <img src="assets/img/work-mama-daughter.jpg" alt="Мама и дочка" loading="lazy">
+                            <span>Мама и дочка</span>
+                        </button>
+                        <button type="button" class="work-card" data-lightbox="assets/img/work-red.jpg" data-caption="Красный трансформер">
+                            <img src="assets/img/work-red.jpg" alt="Красный трансформер" loading="lazy">
+                            <span>Красный трансформер</span>
+                        </button>
+                    </div>
+                    <div class="fp__social-row">
+                        <a href="https://t.me/macramesunpride" target="_blank" rel="noopener noreferrer">Telegram</a>
+                        <a href="https://vk.com/sunpride_handmade" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+                    </div>
+                </div>
             </div>
-            <div class="modal-info">
-                <div class="product-category" id="modalCategory"></div>
-                <h3 class="product-name" id="modalName"></h3>
-                <p class="product-description" id="modalDescription"></p>
-                <div style="margin-top: 2.5rem;">
-                    <div class="product-price" id="modalPrice" style="margin-bottom: 1rem;"></div>
-                    <p style="color: var(--color-text-light); margin-bottom: 2rem;">Для оформления заказа свяжитесь с нами удобным способом.</p>
-                    <a href="#contact" class="cta-button" onclick="closeModal()">Связаться с нами</a>
+
+            <!-- CONTACT -->
+            <div class="swiper-slide fp__slide" data-hash="contact">
+                <div class="fp__bg" data-swiper-parallax="-20%" data-swiper-parallax-scale="1.12"
+                     style="background-image: url(assets/img/work-mama-daughter.jpg)"></div>
+                <div class="fp__overlay"></div>
+                <div class="fp__content container">
+                    <div class="contact-box" data-swiper-parallax-y="-50" data-swiper-parallax-opacity="0">
+                        <p class="eyebrow">Связь</p>
+                        <h2>Заказ изделия или вопрос</h2>
+                        <p>Напишите в Telegram — ответим про индивидуальный пошив и мастер-классы.</p>
+                        <div class="contact-box__actions">
+                            <a class="btn btn--gold btn--lg" href="https://t.me/Tan4ik77G" target="_blank" rel="noopener noreferrer">@Tan4ik77G</a>
+                            <a class="btn btn--ghost btn--lg" href="https://t.me/macramesunpride" target="_blank" rel="noopener noreferrer">Канал</a>
+                        </div>
+                        <img class="contact-box__logo" src="assets/img/logo-tiger.png" width="120" height="120" alt="SUNPRIDE">
+                        <p class="contact-box__copy">&copy; <span id="year"></span> Sun Pride Macramé · Татьяна Солнечная</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        const products = [
-            {
-                icon: '🎨',
-                category: 'Панно',
-                name: 'Настенное панно "Лесная сказка"',
-                description: 'Авторское панно ручной работы из натуральных материалов. Размер 60x80 см. Идеально впишется в интерьер гостиной или спальни, создавая атмосферу уюта и единения с природой. Использованы экологически чистые материалы: джут, сухоцветы, натуральное дерево.',
-                price: 'от 5 500 ₽'
-            },
-            {
-                icon: '👗',
-                category: 'Одежда',
-                name: 'Авторское платье "Солнечный день"',
-                description: 'Легкое летнее платье из натуральных тканей с ручной вышивкой. Размеры: S, M, L, XL. Каждое платье уникально и создается под заказ с учетом ваших пожеланий по цвету, узору и декору. Ткань: 100% хлопок или лен. Время изготовления: 10-14 дней.',
-                price: 'от 8 900 ₽'
-            },
-            {
-                icon: '💎',
-                category: 'Украшения',
-                name: 'Чокер "Лунная роса"',
-                description: 'Элегантный чокер ручной работы с натуральными камнями и авторским плетением. Длина регулируется. Материалы: лунный камень, горный хрусталь, ювелирная проволока. Подчеркнет вашу индивидуальность и дополнит любой образ — от повседневного до вечернего.',
-                price: 'от 3 200 ₽'
-            },
-            {
-                icon: '🌳',
-                category: 'Панно / Декор',
-                name: 'Древо рода из стабилизированного мха',
-                description: 'Уникальное семейное древо из натурального стабилизированного мха. Размеры: от 40x50 см до 100x120 см. Не требует полива и специального ухода, сохраняет свежесть и яркость годами. Возможно добавление фотографий членов семьи, имен, дат. Идеальный подарок для семьи.',
-                price: 'от 12 500 ₽'
-            },
-            {
-                icon: '🌸',
-                category: 'Панно',
-                name: 'Флористическое панно "Весенний сад"',
-                description: 'Нежное панно из стабилизированных цветов и мха. Размер 50x70 см. Сохраняет естественную красоту растений на долгие годы без специального ухода. В композиции использованы розе, гортензии, лаванда, эвкалипт.',
-                price: 'от 6 800 ₽'
-            },
-            {
-                icon: '✨',
-                category: 'Одежда',
-                name: 'Вечернее платье "Звездная ночь"',
-                description: 'Роскошное вечернее платье с ручной вышивкой бисером и пайетками.
+    <a class="scroll-hint" href="#about" data-goto="about" aria-label="Листайте вниз">
+        <span>листайте</span>
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M10 17l-5-5M10 17l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+        <button type="button" class="lightbox__close" data-lightbox-close aria-label="Закрыть">&times;</button>
+        <figure class="lightbox__stage">
+            <img class="lightbox__img" src="" alt="">
+            <figcaption class="lightbox__caption"></figcaption>
+        </figure>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.js?v=1" defer></script>
+</body>
+</html>

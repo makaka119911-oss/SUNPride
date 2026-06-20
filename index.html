@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=3">
+    <link rel="stylesheet" href="assets/css/style.css?v=4">
     <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
 </head>
 <body>
@@ -44,7 +44,10 @@
             <!-- HOME -->
             <div class="swiper-slide fp__slide" data-hash="home">
                 <div class="fp__bg" aria-hidden="true">
-                    <img src="assets/img/hero-poster.jpg" alt="" width="735" height="1103" decoding="async" fetchpriority="high">
+                    <picture>
+                        <source srcset="assets/img/slides/slide-home.webp" type="image/webp">
+                        <img src="assets/img/slides/slide-home.jpg" alt="" width="900" height="1200" decoding="async" fetchpriority="high">
+                    </picture>
                 </div>
                 <div class="fp__overlay fp__overlay--hero"></div>
                 <div class="fp__content container fp__content--hero">
@@ -63,7 +66,10 @@
             <!-- ABOUT -->
             <div class="swiper-slide fp__slide" data-hash="about">
                 <div class="fp__bg" aria-hidden="true">
-                    <img src="assets/img/about-tatyana.jpg" alt="" width="735" height="1103" decoding="async" loading="lazy">
+                    <picture>
+                        <source srcset="assets/img/slides/slide-about.webp" type="image/webp">
+                        <img src="assets/img/slides/slide-about.jpg" alt="" width="900" height="1200" decoding="async" loading="lazy">
+                    </picture>
                 </div>
                 <div class="fp__overlay fp__overlay--warm"></div>
                 <div class="fp__content container">
@@ -82,7 +88,12 @@
 
             <!-- WORKS -->
             <div class="swiper-slide fp__slide fp__slide--works" data-hash="works">
-                <div class="fp__bg fp__bg--plain" aria-hidden="true"></div>
+                <div class="fp__bg" aria-hidden="true">
+                    <picture>
+                        <source srcset="assets/img/slides/slide-works.webp" type="image/webp">
+                        <img src="assets/img/slides/slide-works.jpg" alt="" width="900" height="1200" decoding="async" loading="lazy">
+                    </picture>
+                </div>
                 <div class="fp__overlay fp__overlay--dark"></div>
                 <div class="fp__content container">
                     <div class="section-head">
@@ -129,7 +140,10 @@
             <!-- CONTACT -->
             <div class="swiper-slide fp__slide" data-hash="contact">
                 <div class="fp__bg" aria-hidden="true">
-                    <img src="assets/img/bg-atelier.jpg" alt="" width="960" height="1280" decoding="async" loading="lazy">
+                    <picture>
+                        <source srcset="assets/img/slides/slide-contact.webp" type="image/webp">
+                        <img src="assets/img/slides/slide-contact.jpg" alt="" width="900" height="1200" decoding="async" loading="lazy">
+                    </picture>
                 </div>
                 <div class="fp__overlay"></div>
                 <div class="fp__content container">
@@ -163,6 +177,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="assets/js/main.js?v=3" defer></script>
+    <script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>

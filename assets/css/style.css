@@ -196,12 +196,23 @@ a { color: inherit; }
     overflow: hidden;
 }
 
+.fp__bg picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .fp__bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
+
+.fp__slide[data-hash="home"] .fp__bg img { object-position: 58% 18%; }
+.fp__slide[data-hash="about"] .fp__bg img { object-position: center 32%; }
+.fp__slide--works .fp__bg img { object-position: center 26%; }
+.fp__slide[data-hash="contact"] .fp__bg img { object-position: 54% 28%; }
 
 .fp__bg--plain {
     background:
@@ -226,7 +237,7 @@ a { color: inherit; }
 }
 
 .fp__overlay--dark {
-    background: linear-gradient(180deg, rgba(26, 22, 18, 0.55) 0%, rgba(26, 22, 18, 0.88) 100%);
+    background: linear-gradient(180deg, rgba(26, 22, 18, 0.72) 0%, rgba(26, 22, 18, 0.94) 100%);
 }
 
 .fp__content {

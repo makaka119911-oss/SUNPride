@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
     <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
 </head>
 <body>
     <header class="header" id="header">
         <div class="header__inner">
             <a class="logo" href="#home">
-                <img class="logo__img" src="assets/img/logo-tiger.png" width="48" height="48" alt="">
+                <img class="logo__img" src="assets/img/logo-sunpride.png" width="864" height="1184" alt="SUNPRIDE">
                 <span class="logo__text">SUNPRIDE</span>
             </a>
             <nav class="nav" aria-label="Меню">
@@ -43,7 +43,9 @@
         <div class="swiper-wrapper">
             <!-- HOME -->
             <div class="swiper-slide fp__slide" data-hash="home">
-                <div class="fp__bg" style="background-image: url(assets/img/hero-poster.jpg)"></div>
+                <div class="fp__bg" aria-hidden="true">
+                    <img src="assets/img/hero-poster.jpg" alt="" width="735" height="1103" decoding="async" fetchpriority="high">
+                </div>
                 <div class="fp__overlay fp__overlay--hero"></div>
                 <div class="fp__content container fp__content--hero">
                     <p class="eyebrow">Macramé · с 2023</p>
@@ -60,7 +62,9 @@
 
             <!-- ABOUT -->
             <div class="swiper-slide fp__slide" data-hash="about">
-                <div class="fp__bg" style="background-image: url(assets/img/about-tatyana.jpg)"></div>
+                <div class="fp__bg" aria-hidden="true">
+                    <img src="assets/img/about-tatyana.jpg" alt="" width="735" height="1103" decoding="async" loading="lazy">
+                </div>
                 <div class="fp__overlay fp__overlay--warm"></div>
                 <div class="fp__content container">
                     <div class="about-box">
@@ -78,7 +82,7 @@
 
             <!-- WORKS -->
             <div class="swiper-slide fp__slide fp__slide--works" data-hash="works">
-                <div class="fp__bg" style="background-image: url(assets/img/works/work-gold-set.jpg)"></div>
+                <div class="fp__bg fp__bg--plain" aria-hidden="true"></div>
                 <div class="fp__overlay fp__overlay--dark"></div>
                 <div class="fp__content container">
                     <div class="section-head">
@@ -87,19 +91,31 @@
                     </div>
                     <div class="works-grid" data-slider-wheel-ignore>
                         <button type="button" class="work-card" data-lightbox="assets/img/works/work-pink.jpg" data-caption="Розовая нежность">
-                            <img src="assets/img/works/work-pink.jpg" alt="Розовый комплект" loading="lazy">
+                            <picture>
+                                <source srcset="assets/img/works/work-pink.webp" type="image/webp">
+                                <img src="assets/img/works/work-pink.jpg" alt="Розовый комплект" width="1080" height="1080" loading="lazy" decoding="async">
+                            </picture>
                             <span>Розовая нежность</span>
                         </button>
                         <button type="button" class="work-card" data-lightbox="assets/img/works/work-gold-set.jpg" data-caption="Золотой комплект">
-                            <img src="assets/img/works/work-gold-set.jpg" alt="Золотой комплект" loading="lazy">
+                            <picture>
+                                <source srcset="assets/img/works/work-gold-set.webp" type="image/webp">
+                                <img src="assets/img/works/work-gold-set.jpg" alt="Золотой комплект" width="333" height="400" loading="lazy" decoding="async">
+                            </picture>
                             <span>Золотой комплект</span>
                         </button>
                         <button type="button" class="work-card" data-lightbox="assets/img/works/work-mama-daughter.jpg" data-caption="Мама и дочка">
-                            <img src="assets/img/works/work-mama-daughter.jpg" alt="Мама и дочка" loading="lazy">
+                            <picture>
+                                <source srcset="assets/img/works/work-mama-daughter.webp" type="image/webp">
+                                <img src="assets/img/works/work-mama-daughter.jpg" alt="Мама и дочка" width="1080" height="1080" loading="lazy" decoding="async">
+                            </picture>
                             <span>Мама и дочка</span>
                         </button>
                         <button type="button" class="work-card" data-lightbox="assets/img/works/work-red.jpg" data-caption="Красный трансформер">
-                            <img src="assets/img/works/work-red.jpg" alt="Красный трансформер" loading="lazy">
+                            <picture>
+                                <source srcset="assets/img/works/work-red.webp" type="image/webp">
+                                <img src="assets/img/works/work-red.jpg" alt="Красный трансформер" width="333" height="400" loading="lazy" decoding="async">
+                            </picture>
                             <span>Красный трансформер</span>
                         </button>
                     </div>
@@ -112,7 +128,9 @@
 
             <!-- CONTACT -->
             <div class="swiper-slide fp__slide" data-hash="contact">
-                <div class="fp__bg" style="background-image: url(assets/img/works/work-mama-daughter.jpg)"></div>
+                <div class="fp__bg" aria-hidden="true">
+                    <img src="assets/img/bg-atelier.jpg" alt="" width="960" height="1280" decoding="async" loading="lazy">
+                </div>
                 <div class="fp__overlay"></div>
                 <div class="fp__content container">
                     <div class="contact-box">
@@ -145,6 +163,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="assets/js/main.js?v=2" defer></script>
+    <script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>
